@@ -33,14 +33,16 @@ public class SpawnManager : MonoBehaviour
     // controls the UI (FOR TESTING ONLY)
     [Header("FOR TESTING, REMOVE LATER")]
     public UITextController UIT;
+    float time;
 
     // Start is called before the first frame update
     void Start()
     {
         // resets round number, spawns the first wave, and updates UI
         roundNumber = 1;
+        time = 2f;
         DecideSpawns();
-        UIT.UpdateText(Mathf.CeilToInt(enemiesCount), roundNumber);
+        UIT.UpdateRoundText(roundNumber);
     }
 
     // Update is called once per frame
@@ -48,12 +50,18 @@ public class SpawnManager : MonoBehaviour
     {
         // find all enemies in the scene
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        UIT.UpdateEnemyCount(enemies.Length);
+
+        time -= Time.deltaTime;
 
         // progress round if there are no enemies left
-        if (enemies.Length == 0)
+        if (enemies.Length == 0 && time <= 0)
         {
             roundIncrease();
+
             DecideSpawns();
+
+            time = 2f;
         }
 
         // FOR TESTING, REMOVE LATER
@@ -64,6 +72,8 @@ public class SpawnManager : MonoBehaviour
             {
                 Destroy(i.gameObject);
             }
+            //Debug.Log(enemies.Length + " " + time);
+
         }
     }
 
@@ -77,11 +87,12 @@ public class SpawnManager : MonoBehaviour
         if (roundNumber % 25 == 0)
         {
             Mathf.CeilToInt(enemyVal /= (enemyValIncrease * 1.5f));
+            Mathf.CeilToInt(enemiesCount /= (enemyIncrease * 1.5f));
         }
 
         // increase round number and update text
         roundNumber++;
-        UIT.UpdateText(Mathf.CeilToInt(enemiesCount), roundNumber);
+        UIT.UpdateRoundText(roundNumber);
     }
 
     private void DecideSpawns()
@@ -97,7 +108,8 @@ public class SpawnManager : MonoBehaviour
             {
                 if (enemyCost[i] <= currVal / 2 && enCount > 0)
                 {
-                    SpawnObject(enemyTypes[i]);
+                    //Debug.Log("Spawning " + enemyTypes[i].name + " after " + ((i % 20) + 1) + " seconds");
+                    StartCoroutine(SpawnObject(enemyTypes[i], (i % enemiesCount) + 3 ) );
                     currVal -= enemyCost[i];
                     enCount--;
                     spawned = true;
@@ -106,7 +118,8 @@ public class SpawnManager : MonoBehaviour
 
             if (!spawned && enCount > 0)
             {
-                SpawnObject(enemyTypes[enemyTypes.Length - 1]);
+                //Debug.Log("Spawning basic after some seconds to fill cap");
+                StartCoroutine(SpawnObject(enemyTypes[enemyTypes.Length - 1], Random.Range(1f, 3f) ) );
                 currVal -= enemyCost[enemyCost.Length - 1];
                 enCount--;
             }
@@ -118,8 +131,10 @@ public class SpawnManager : MonoBehaviour
     /*
      * SPAWN AN ENEMY AT A RANDOM POINT
      */
-    private void SpawnObject(GameObject spawn)
+    private IEnumerator SpawnObject(GameObject spawn, float time)
     {
+        yield return new WaitForSecondsRealtime(time);
+
         Transform point = spawnPoints[Random.Range(0, spawnPoints.Length)];
         Vector3 sP = new Vector3(point.position.x + Random.Range(-3f, 3f), point.position.y, point.position.z + Random.Range(-3f, 3f));
         Instantiate(spawn, sP, Quaternion.identity);
