@@ -5,14 +5,18 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - EnemyWeapon
+  - Object
+  - Railgun
+  - Team2
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 
