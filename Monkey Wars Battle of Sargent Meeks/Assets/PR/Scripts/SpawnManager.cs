@@ -41,8 +41,12 @@ public class SpawnManager : MonoBehaviour
         // resets round number, spawns the first wave, and updates UI
         roundNumber = 1;
         time = 2f;
+        DecideSpawnPoints();
+
         DecideSpawns();
+
         UIT.UpdateRoundText(roundNumber);
+
     }
 
     // Update is called once per frame
@@ -90,6 +94,8 @@ public class SpawnManager : MonoBehaviour
             Mathf.CeilToInt(enemiesCount /= (enemyIncrease * 1.5f));
         }
 
+        DecideSpawnPoints();
+
         // increase round number and update text
         roundNumber++;
         UIT.UpdateRoundText(roundNumber);
@@ -135,8 +141,41 @@ public class SpawnManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(time);
 
-        Transform point = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        Transform point;
+        do
+        {
+            point = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        } while (!point.gameObject.activeSelf);
+             
         Vector3 sP = new Vector3(point.position.x + Random.Range(-3f, 3f), point.position.y, point.position.z + Random.Range(-3f, 3f));
         Instantiate(spawn, sP, Quaternion.identity);
+    }
+
+    /*
+     * DECIDE SPAWNPOINTS
+     */
+    private void DecideSpawnPoints()
+    {
+        foreach (Transform t in spawnPoints)
+        {
+            t.gameObject.SetActive(true);
+        }
+
+        int[] points = new int[4];
+        for (int i = 0; i < 4; i++)
+        {
+            do
+            {
+                points[i] = Random.Range(0, spawnPoints.Length);
+            } while (points[i] == points[(i + 1) % points.Length] ||
+                     points[i] == points[(i + 2) % points.Length] ||
+                     points[i] == points[(i + 3) % points.Length]);
+            Debug.Log(points[i]);
+        }
+
+        foreach (int i in points)
+        {
+            spawnPoints[i].gameObject.SetActive(false);
+        }
     }
 }
