@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 using Debug = UnityEngine.Debug;
+using static UnityEngine.GraphicsBuffer;
 
 public class EnemyBehavior : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class EnemyBehavior : MonoBehaviour
     public Transform player;
     public LayerMask groundCheck, playerCheck;
     public Animator animator;
+    public Transform gun;
     // Patrolling Variables
     public Vector3 walkPoint;
     bool walkPointSet;
@@ -26,6 +28,8 @@ public class EnemyBehavior : MonoBehaviour
     // Range Variables
     public float visionRange, attackRange;
     public bool playerInSight, playerInRange;
+
+    public int cost;
 
     private void Awake()
     {
@@ -78,15 +82,14 @@ public class EnemyBehavior : MonoBehaviour
         // Stop moving during attack
         agent.SetDestination(transform.position);
         // Look towards player
-        transform.LookAt(player);
+        transform.rotation = Quaternion.LookRotation(player.transform.position - transform.position);
+        transform.rotation = Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0);
+        gun.LookAt(player);
 
         // If enemy hasn't attacked yet, attack, then call ResetAttack to reset cooldown
         if (!alreadyAttacked)
         {
-            /**
-             * ATTACK CODE GOES HERE 
-             **/
-            Debug.Log("I'm Attacking!");
+            //Debug.Log("I'm Attacking!");
 
             // Reset cooldown using cooldown variable as timer
             alreadyAttacked = true;
