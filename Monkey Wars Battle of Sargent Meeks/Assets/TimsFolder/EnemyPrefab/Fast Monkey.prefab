@@ -3890,6 +3890,7 @@ MonoBehaviour:
   fireSound: {fileID: 8300000, guid: 8712960018b3fa4478f96eaaff2fa330, type: 3}
   reloadSound: {fileID: 8300000, guid: a236ed6ed1165ca44908f0cfe8c7ed65, type: 3}
   dryFireSound: {fileID: 0}
+  playerInRange: 0
 --- !u!82 &2536380498939595602
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4759,6 +4760,7 @@ MonoBehaviour:
   gun: {fileID: 2536380498947420182}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
+  wc: {fileID: 2536380498936405842}
   attackCooldown: 2
   canAttack: 1
   visionRange: 1000
