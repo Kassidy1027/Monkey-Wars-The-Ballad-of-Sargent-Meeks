@@ -1034,8 +1034,8 @@ MonoBehaviour:
   - {fileID: 7430122783224634928, guid: 020e51d2b30246d41947004af79a93d8, type: 3}
   - {fileID: 3114576745723079255, guid: aaa5c194f666d354cafd26570feff366, type: 3}
   - {fileID: 847524307093177847, guid: 9387840d58eafae499d47142f6e4e48e, type: 3}
-  enemyCost: 190000000a0000000500000001000000
-  enemyVal: 15
+  enemyCost: 32000000140000000800000001000000
+  enemyVal: 25
   enemiesCount: 20
   enemyValIncrease: 1.06
   enemyIncrease: 1.04

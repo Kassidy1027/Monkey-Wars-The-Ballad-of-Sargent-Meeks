@@ -17,6 +17,11 @@ public class SpawnManager : MonoBehaviour
     // keeps track of the round number (might get moved to another script later)
     private int roundNumber = 1;
 
+    // keeps tracked of the number of enemies spawned and the total to spawn (prevents the round from increasing multiple times due to lack of immediate enemies)
+    private int totalSpawns;
+    private int amountSpawned;
+
+
     // current enemy value (combined basic equivalent) and number of enemies to spawn
     [Header("Enemy Value and Total")]
     public float enemyVal = 20f;
@@ -61,23 +66,24 @@ public class SpawnManager : MonoBehaviour
         // progress round if there are no enemies left
         if (enemies.Length == 0 && time <= 0)
         {
-            roundIncrease();
 
-            DecideSpawns();
-
-            time = 2f;
         }
 
         // FOR TESTING, REMOVE LATER
         // skips the round
         if (Input.GetKeyDown("b"))
         {
-            foreach (GameObject i in enemies)
-            {
-                Destroy(i.gameObject);
-            }
-            //Debug.Log(enemies.Length + " " + time);
+            if (enemies.Length >= totalSpawns) {
+                foreach (GameObject i in enemies)
+                {
+                    Destroy(i.gameObject);
+                }
+                roundIncrease();
 
+                DecideSpawns();
+
+                time = 2f;
+            }
         }
     }
 
@@ -85,13 +91,13 @@ public class SpawnManager : MonoBehaviour
     {
         // increase the enemy value and cound by a percentage
         Mathf.CeilToInt(enemyVal *= enemyValIncrease);
-        Mathf.CeilToInt(enemiesCount *= enemyIncrease);
+        //Mathf.CeilToInt(enemiesCount *= enemyIncrease);
 
         // decreases the total value to prevent values ramping out of control
         if (roundNumber % 25 == 0)
         {
             Mathf.CeilToInt(enemyVal /= (enemyValIncrease * 1.5f));
-            Mathf.CeilToInt(enemiesCount /= (enemyIncrease * 1.5f));
+            //Mathf.CeilToInt(enemiesCount /= (enemyIncrease * 1.5f));
         }
 
         DecideSpawnPoints();
@@ -104,34 +110,40 @@ public class SpawnManager : MonoBehaviour
     private void DecideSpawns()
     {
         int currVal = Mathf.CeilToInt(enemyVal);
-        int enCount = Mathf.CeilToInt(enemiesCount);
-        bool spawned = false;
+        int enCount = 0;
+        bool spawned = true;
 
-        while (enCount > 0)
+        //while (enCount > 0)
+        while(spawned)
         {
             spawned = false;
             for (int i = 0; i < enemyCost.Length; i++)
             {
-                if (enemyCost[i] <= currVal / 2 && enCount > 0)
+                //if (enemyCost[i] <= currVal / 2 && enCount > 0)
+                if (enemyCost[i] <= currVal / 3)
                 {
                     //Debug.Log("Spawning " + enemyTypes[i].name + " after " + ((i % 20) + 1) + " seconds");
-                    StartCoroutine(SpawnObject(enemyTypes[i], (i % enemiesCount) + 3 ) );
+                    StartCoroutine(SpawnObject(enemyTypes[i], 0.0f ) );
+                    //Random.Range(0.5f, 10.0f)
                     currVal -= enemyCost[i];
-                    enCount--;
+                    //enCount--;
                     spawned = true;
+
+                    enCount++;
+
                 }
             }
 
-            if (!spawned && enCount > 0)
-            {
+            //if (!spawned && enCount > 0)
+            //{
                 //Debug.Log("Spawning basic after some seconds to fill cap");
-                StartCoroutine(SpawnObject(enemyTypes[enemyTypes.Length - 1], Random.Range(1f, 3f) ) );
-                currVal -= enemyCost[enemyCost.Length - 1];
-                enCount--;
-            }
+                //StartCoroutine(SpawnObject(enemyTypes[enemyTypes.Length - 1], Random.Range(1f, 3f) ) );
+                //currVal -= enemyCost[enemyCost.Length - 1];
+                //enCount--;
+            //}
 
         }
-
+        totalSpawns = enCount;
     }
 
     /*
@@ -147,7 +159,7 @@ public class SpawnManager : MonoBehaviour
             point = spawnPoints[Random.Range(0, spawnPoints.Length)];
         } while (!point.gameObject.activeSelf);
              
-        Vector3 sP = new Vector3(point.position.x + Random.Range(-3f, 3f), point.position.y, point.position.z + Random.Range(-3f, 3f));
+        Vector3 sP = new Vector3(point.position.x + Random.Range(-4.0f, 4.0f), point.position.y, point.position.z + Random.Range(-3f, 3f));
         Instantiate(spawn, sP, Quaternion.identity);
     }
 
@@ -170,7 +182,7 @@ public class SpawnManager : MonoBehaviour
             } while (points[i] == points[(i + 1) % points.Length] ||
                      points[i] == points[(i + 2) % points.Length] ||
                      points[i] == points[(i + 3) % points.Length]);
-            Debug.Log(points[i]);
+            //Debug.Log(points[i]);
         }
 
         foreach (int i in points)
