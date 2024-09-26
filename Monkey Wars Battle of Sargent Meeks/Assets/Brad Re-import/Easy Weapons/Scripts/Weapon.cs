@@ -219,7 +219,7 @@ public class Weapon : MonoBehaviour
 
     private bool isEnemyWeapon;
     private double enemyTimer;
-    private bool playerInRange;
+    public bool playerInRange;
     private Transform target;
 
     // Use this for initialization
@@ -230,7 +230,7 @@ public class Weapon : MonoBehaviour
             isEnemyWeapon = true;
             enemyTimer = 0;
             playerInRange = false;
-            player = GameObject.Find("FirstPersonController");
+            player = GameObject.Find("Player");
             playerHealth = player.GetComponent<Health>();
         }
 
@@ -371,7 +371,7 @@ public class Weapon : MonoBehaviour
             {
                 transform.LookAt(target);
             }
-            if (enemyTimer > 500 && playerInRange)
+            if (enemyTimer > 800 && playerInRange)
             {
                 if (type == WeaponType.Projectile)
                 {
@@ -450,6 +450,17 @@ public class Weapon : MonoBehaviour
                     {
                         Launch();
                     }
+                }
+            }
+
+            if (isEnemyWeapon)
+            {
+                enemyTimer += 1;
+                transform.LookAt(target);
+                if (enemyTimer > 1000 && playerInRange)
+                {
+                    Launch();
+                    enemyTimer = 0;
                 }
             }
 

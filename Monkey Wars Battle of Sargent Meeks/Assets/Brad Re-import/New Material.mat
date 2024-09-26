@@ -7,11 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<<< HEAD:Monkey Wars Battle of Sargent Meeks/Assets/Brad Re-import/New Material.mat
   m_Name: New Material
-========
-  m_Name: FloorTest
->>>>>>>> 2a8679d2a965ef8bf134c710dac8745e4ed2c5f4:Monkey Wars Battle of Sargent Meeks/Assets/TimsFolder/Materials/FloorTest.mat
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -82,10 +78,6 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-<<<<<<<< HEAD:Monkey Wars Battle of Sargent Meeks/Assets/Brad Re-import/New Material.mat
     - _Color: {r: 0, g: 0, b: 0, a: 1}
-========
-    - _Color: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 1}
->>>>>>>> 2a8679d2a965ef8bf134c710dac8745e4ed2c5f4:Monkey Wars Battle of Sargent Meeks/Assets/TimsFolder/Materials/FloorTest.mat
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

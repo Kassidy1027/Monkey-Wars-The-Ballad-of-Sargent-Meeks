@@ -19,6 +19,7 @@ public class EnemyBehavior : MonoBehaviour
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
+    public Weapon wc;
 
     // Attacking Variables
     public float attackCooldown;
@@ -50,6 +51,14 @@ public class EnemyBehavior : MonoBehaviour
             if (!playerInSight && !playerInRange) Patrolling();
             if (playerInSight && !playerInRange) Chasing();
             if (playerInRange) Attacking();
+        }
+        if (playerInRange)
+        {
+            wc.playerInRange = true;
+        }
+        else
+        {
+            wc.playerInRange = false;
         }
     }
 

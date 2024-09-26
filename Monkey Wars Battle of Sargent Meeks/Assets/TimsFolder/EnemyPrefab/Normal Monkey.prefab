@@ -9547,7 +9547,7 @@ GameObject:
   - component: {fileID: 2609994100693650841}
   - component: {fileID: 9165609368282471192}
   m_Layer: 0
-  m_Name: MrMo_A
+  m_Name: Normal Monkey
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9605,10 +9605,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canDie: 1
-  startingHealth: 400
-  maxHealth: 400
-  currentHealth: 400
-  replaceWhenDead: 1
+  startingHealth: 250
+  maxHealth: 250
+  currentHealth: 250
+  replaceWhenDead: 0
   deadReplacement: {fileID: 3886764786314746032, guid: 484c672c45cb2c748bf7419bc0856332, type: 3}
   makeExplosion: 0
   explosion: {fileID: 0}
@@ -9708,6 +9708,7 @@ MonoBehaviour:
   gun: {fileID: 7576568686126168090}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
+  wc: {fileID: 7576568686116198238}
   attackCooldown: 2
   canAttack: 1
   visionRange: 10
@@ -9726,7 +9727,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 20
-  m_Acceleration: 8
+  m_Acceleration: 7
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
@@ -12022,6 +12023,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 242781025081755632, guid: 84895eaf3bc0b0741ac32e18f56f09ad, type: 3}
+      propertyPath: rateOfFire
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 242781025081755632, guid: 84895eaf3bc0b0741ac32e18f56f09ad, type: 3}
       propertyPath: infiniteAmmo
       value: 1
       objectReference: {fileID: 0}
@@ -12098,6 +12103,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84895eaf3bc0b0741ac32e18f56f09ad, type: 3}
+--- !u!114 &7576568686116198238 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 242781025081755632, guid: 84895eaf3bc0b0741ac32e18f56f09ad, type: 3}
+  m_PrefabInstance: {fileID: 7672982703980531886}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cfdbd9104e186642943082e0cd11378, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7576568686126168090 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 242781025088579764, guid: 84895eaf3bc0b0741ac32e18f56f09ad, type: 3}
