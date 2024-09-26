@@ -9547,7 +9547,7 @@ GameObject:
   - component: {fileID: 2609994100693650841}
   - component: {fileID: 9165609368282471192}
   m_Layer: 0
-  m_Name: MrMo_A
+  m_Name: Normal Monkey
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
