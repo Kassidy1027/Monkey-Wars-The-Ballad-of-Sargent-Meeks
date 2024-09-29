@@ -9608,7 +9608,7 @@ MonoBehaviour:
   startingHealth: 250
   maxHealth: 250
   currentHealth: 250
-  replaceWhenDead: 0
+  replaceWhenDead: 1
   deadReplacement: {fileID: 3886764786314746032, guid: 484c672c45cb2c748bf7419bc0856332, type: 3}
   makeExplosion: 0
   explosion: {fileID: 0}
@@ -9706,10 +9706,12 @@ MonoBehaviour:
     m_Bits: 64
   animator: {fileID: 0}
   gun: {fileID: 7576568686126168090}
+  playerHealth: {fileID: 0}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   wc: {fileID: 7576568686116198238}
-  attackCooldown: 2
+  attackCooldown: 3
+  hitChance: 4
   canAttack: 1
   visionRange: 10
   attackRange: 5
@@ -9726,8 +9728,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 20
-  m_Acceleration: 7
+  m_Speed: 10
+  m_Acceleration: 4
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0

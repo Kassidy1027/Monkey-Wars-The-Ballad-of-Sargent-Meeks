@@ -364,7 +364,7 @@ public class Weapon : MonoBehaviour
             beaming = false;    // The beaming variable is set to true every frame that the Beam() method is called
         }
 
-        if (isEnemyWeapon)
+        /*if (isEnemyWeapon)
             enemyTimer += 1;
         {
             if (type == WeaponType.Projectile)
@@ -388,7 +388,7 @@ public class Weapon : MonoBehaviour
                     playerHealth.currentHealth -= 10;
                 }
             }
-        }
+        }*/
     }
 
     // Checks for user input to use the weapons - only if this weapon is player-controlled
@@ -453,6 +453,7 @@ public class Weapon : MonoBehaviour
                 }
             }
 
+            /*
             if (isEnemyWeapon)
             {
                 enemyTimer += 1;
@@ -463,6 +464,7 @@ public class Weapon : MonoBehaviour
                     enemyTimer = 0;
                 }
             }
+            */
 
         }
         // Reset the Burst
@@ -648,7 +650,7 @@ public class Weapon : MonoBehaviour
 
 
     // Raycasting system
-    void Fire()
+    public void Fire()
     {
         // Reset the fireTimer to 0 (for ROF)
         fireTimer = 0.0f;

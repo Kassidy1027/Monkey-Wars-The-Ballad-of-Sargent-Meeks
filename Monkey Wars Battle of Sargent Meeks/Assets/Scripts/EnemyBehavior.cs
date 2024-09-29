@@ -15,21 +15,37 @@ public class EnemyBehavior : MonoBehaviour
     public LayerMask groundCheck, playerCheck;
     public Animator animator;
     public Transform gun;
+    public Health playerHealth;
+
     // Patrolling Variables
+    /*
+     * walkPointRange = how large patrol radius is
+     * wc = script on enemy's gun
+     */
     public Vector3 walkPoint;
     bool walkPointSet;
     public float walkPointRange;
     public Weapon wc;
 
     // Attacking Variables
+    /*
+     * attackCooldown = how long it takes for enemy to attack again (lower = faster)
+     * hitChance = how likely enemy is to deal damage with raycast weapon (higher = more accurate)
+     */
     public float attackCooldown;
+    public float hitChance;
     public bool canAttack = true;
     bool alreadyAttacked;
 
     // Range Variables
+    /*
+     * visionRange = how far away they can see player from
+     * attackRange = how far away they start attacking player from
+     */
     public float visionRange, attackRange;
     public bool playerInSight, playerInRange;
 
+    // cost = how much enemy costs to be spawned by wave system
     public int cost;
 
     private void Awake()
@@ -99,6 +115,22 @@ public class EnemyBehavior : MonoBehaviour
         if (!alreadyAttacked)
         {
             //Debug.Log("I'm Attacking!");
+
+            // If weapon type is raycast, shoot and use random chance to see if damage is taken
+            if (wc.type == WeaponType.Raycast)
+            {
+                wc.Fire();
+                float hitRoll = Random.Range(0, 10);
+                if (hitRoll < hitChance)
+                {
+                    playerHealth.currentHealth -= 10;
+                }
+            }
+            // If weapon type is projectile, launch projectile (explosion will handle damage dealing)
+            else if (wc.type == WeaponType.Projectile)
+            {
+                wc.Launch();
+            }
 
             // Reset cooldown using cooldown variable as timer
             alreadyAttacked = true;
