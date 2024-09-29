@@ -9712,6 +9712,7 @@ MonoBehaviour:
   wc: {fileID: 7576568686116198238}
   attackCooldown: 3
   hitChance: 4
+  damage: 10
   canAttack: 1
   visionRange: 10
   attackRange: 5

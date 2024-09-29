@@ -31,9 +31,11 @@ public class EnemyBehavior : MonoBehaviour
     /*
      * attackCooldown = how long it takes for enemy to attack again (lower = faster)
      * hitChance = how likely enemy is to deal damage with raycast weapon (higher = more accurate)
+     * damage = how much damage raycast type enemies deal each shot
      */
     public float attackCooldown;
     public float hitChance;
+    public float damage = 10;
     public bool canAttack = true;
     bool alreadyAttacked;
 
@@ -123,7 +125,7 @@ public class EnemyBehavior : MonoBehaviour
                 float hitRoll = Random.Range(0, 10);
                 if (hitRoll < hitChance)
                 {
-                    playerHealth.currentHealth -= 10;
+                    playerHealth.currentHealth -= damage;
                 }
             }
             // If weapon type is projectile, launch projectile (explosion will handle damage dealing)
