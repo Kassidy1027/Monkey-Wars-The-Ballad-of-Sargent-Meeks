@@ -33,10 +33,17 @@ public class Health : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
-		// Initialize the currentHealth variable to the value specified by the user in startingHealth
-		currentHealth = startingHealth;
-		deathCamera = deathCam.GetComponent<Camera>();
-		gameStarts = false;
+		// Initialize the currentHealth variable to the value specified by the user in startingHealth		
+		try
+		{
+			if(deathCam != null)
+				deathCamera = deathCam.GetComponent<Camera>();
+		}
+		finally
+		{
+			currentHealth = startingHealth;
+			gameStarts = false;
+		}
 	}
 
 	void Update()

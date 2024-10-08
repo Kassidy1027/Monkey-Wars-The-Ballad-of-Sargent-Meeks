@@ -20,13 +20,6 @@ public class BulletHolePool : MonoBehaviour
 			replacementBulletHole = new GameObject();
 		}
 	}
-	
-	// Update is called once per frame
-	void Update()
-	{
-		
-	}
-
 
 	// Increment the current index - a method is used for this so that every time it's incremented, we also check and make sure the index hasn't yet reached number of bullet holes in the pool
 	private void IncrementIndex()

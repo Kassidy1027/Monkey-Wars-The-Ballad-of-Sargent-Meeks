@@ -3771,12 +3771,13 @@ MonoBehaviour:
   wc: {fileID: 2439284849834235060}
   attackCooldown: 4
   hitChance: 0
+  damage: 10
   canAttack: 1
   visionRange: 30
   attackRange: 10
   playerInSight: 0
   playerInRange: 0
-  cost: 0
+  cost: 30
 --- !u!195 &5563479098867491238
 NavMeshAgent:
   m_ObjectHideFlags: 0

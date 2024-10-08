@@ -57,6 +57,11 @@ public class EnemyBehavior : MonoBehaviour
         player = GameObject.Find("Player").transform;
     }
 
+    private void Start()
+    {
+        playerHealth = player.gameObject.GetComponent<Health>();
+    }
+
     private void Update()
     {
         if (canAttack)

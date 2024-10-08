@@ -9718,7 +9718,7 @@ MonoBehaviour:
   attackRange: 5
   playerInSight: 0
   playerInRange: 0
-  cost: 0
+  cost: 1
 --- !u!195 &9165609368282471192
 NavMeshAgent:
   m_ObjectHideFlags: 0
