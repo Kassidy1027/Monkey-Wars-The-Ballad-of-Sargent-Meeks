@@ -144,6 +144,7 @@ public class Weapon : MonoBehaviour
     public int ammoCapacity = 12;                       // The number of rounds this weapon can fire before it has to reload
     public int shotPerRound = 1;                        // The number of "bullets" that will be fired on each round.  Usually this will be 1, but set to a higher number for things like shotguns with spread
     private int currentAmmo;                            // How much ammo the weapon currently has
+    public int reserveAmmo;                             // How much ammo is in reserve
     public float reloadTime = 2.0f;                     // How much time it takes to reload the weapon
     public bool showCurrentAmmo = true;                 // Whether or not the current ammo should be displayed in the GUI
     public bool reloadAutomatically = true;             // Whether or not the weapon should reload automatically when out of ammo
@@ -232,6 +233,15 @@ public class Weapon : MonoBehaviour
             playerInRange = false;
             player = GameObject.Find("Player");
             playerHealth = player.GetComponent<Health>();
+        }
+
+        if (type == WeaponType.Raycast)
+        {
+            reserveAmmo = 200;
+        }
+        else if (type == WeaponType.Projectile)
+        {
+            reserveAmmo = 16;
         }
 
         gameStart = false;
@@ -642,7 +652,7 @@ public class Weapon : MonoBehaviour
         if (showCurrentAmmo)
         {
             if (type == WeaponType.Raycast || type == WeaponType.Projectile)
-                GUI.Label(new Rect(10, Screen.height - 30, 300, 60), "Ammo: " + currentAmmo);
+                GUI.Label(new Rect(10, Screen.height - 30, 300, 60), "Ammo: " + currentAmmo + " / " + reserveAmmo);
             else if (type == WeaponType.Beam)
                 GUI.Label(new Rect(10, Screen.height - 30, 300, 60), "Heat: " + (int)(beamHeat * 100) + "/" + (int)(maxBeamHeat * 100));
         }
@@ -1143,9 +1153,23 @@ public class Weapon : MonoBehaviour
     // Reload the weapon
     void Reload()
     {
-        currentAmmo = ammoCapacity;
-        fireTimer = -reloadTime;
-        GetComponent<AudioSource>().PlayOneShot(reloadSound);
+        if (reserveAmmo > 0)
+        {
+            int tempAmmo = currentAmmo;
+            if (reserveAmmo >= ammoCapacity)
+            {
+                currentAmmo = ammoCapacity;
+                reserveAmmo -= (ammoCapacity - tempAmmo);
+            }
+            else
+            {
+                currentAmmo = reserveAmmo;
+                reserveAmmo = 0;
+            }
+            
+            fireTimer = -reloadTime;
+            GetComponent<AudioSource>().PlayOneShot(reloadSound);
+        }
 
         // Send a messsage so that users can do other actions whenever this happens
         SendMessageUpwards("OnEasyWeaponsReload", SendMessageOptions.DontRequireReceiver);

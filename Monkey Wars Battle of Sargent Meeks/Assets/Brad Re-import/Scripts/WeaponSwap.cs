@@ -6,6 +6,10 @@ public class WeaponSwap : MonoBehaviour
 {
     private bool gameIsStart;
 
+    private Weapon currentWeapon;
+
+
+
     public bool weapon2;
     public bool weapon3;
     public bool weapon4;
@@ -26,6 +30,7 @@ public class WeaponSwap : MonoBehaviour
     void Start()
     {
         gameIsStart = false;
+        currentWeapon = mfour;
         weapon2 = false;
         weapon3 = false;
         weapon4 = false;
@@ -47,6 +52,7 @@ public class WeaponSwap : MonoBehaviour
         {
             mfourMesh.enabled = true;
             mfour.playerWeapon = true;
+            currentWeapon = mfour;
             mfour.showCurrentAmmo = true;
             mfour.showCrosshair = true;
             pistolMesh.enabled = false;
@@ -68,6 +74,7 @@ public class WeaponSwap : MonoBehaviour
             {
                 mfourMesh.enabled = false;
                 mfour.playerWeapon = false;
+                currentWeapon = pistol;
                 mfour.showCurrentAmmo = false;
                 mfour.showCrosshair = false;
                 pistolMesh.enabled = true;
@@ -90,6 +97,7 @@ public class WeaponSwap : MonoBehaviour
             {
                 mfourMesh.enabled = false;
                 mfour.playerWeapon = false;
+                currentWeapon = cluster;
                 mfour.showCurrentAmmo = false;
                 mfour.showCrosshair = false;
                 pistolMesh.enabled = false;
@@ -112,6 +120,7 @@ public class WeaponSwap : MonoBehaviour
             {
                 mfourMesh.enabled = false;
                 mfour.playerWeapon = false;
+                currentWeapon = railgun;
                 mfour.showCurrentAmmo = false;
                 mfour.showCrosshair = false;
                 pistolMesh.enabled = false;
