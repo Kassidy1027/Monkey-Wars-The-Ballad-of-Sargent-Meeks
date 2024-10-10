@@ -141,26 +141,24 @@ public class SpawnManager : MonoBehaviour
      */
     private void DecideSpawnPoints()
     {
+        int num = Mathf.FloorToInt(roundNumber * 1.3f);
+
+        if (num > spawnPoints.Length)
+            num = spawnPoints.Length;
+
         foreach (Transform t in spawnPoints)
         {
-            t.gameObject.SetActive(true);
+            t.gameObject.SetActive(false);
         }
 
-        int[] points = new int[4];
-        for (int i = 0; i < 4; i++)
+        while (num > 0)
         {
-            do
+            int i = Random.Range(0, spawnPoints.Length - 1);
+            if (!spawnPoints[i].gameObject.activeSelf)
             {
-                points[i] = Random.Range(0, spawnPoints.Length);
-            } while (points[i] == points[(i + 1) % points.Length] ||
-                     points[i] == points[(i + 2) % points.Length] ||
-                     points[i] == points[(i + 3) % points.Length]);
-            //Debug.Log(points[i]);
-        }
-
-        foreach (int i in points)
-        {
-            spawnPoints[i].gameObject.SetActive(false);
+                spawnPoints[i].gameObject.SetActive(true);
+                num--;
+            }        
         }
     }
 
@@ -170,4 +168,10 @@ public class SpawnManager : MonoBehaviour
     {
         return enemiesSpawned >= totalSpawns;
     }
+
+    private bool Chance(int max)
+    {
+        return Random.Range(0, max) == 0;
+    }
+
 }

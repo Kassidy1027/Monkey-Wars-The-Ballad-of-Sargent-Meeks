@@ -223,6 +223,10 @@ PrefabInstance:
       propertyPath: bulletHoleGroups.Array.data[8].bulletHole
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4459864850019384736, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4459864850019384738, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1188,7 +1192,7 @@ MonoBehaviour:
   - {fileID: 2553367544506148186, guid: 267a7f6d2338bd64993967793da172db, type: 3}
   - {fileID: 2937343409781529669, guid: 219b9a7440354b24daccf7e50af2a171, type: 3}
   - {fileID: 7121849036914824265, guid: 53ab6df8d4282514fb2e0250f8b6f91b, type: 3}
-  enemyVal: 2
+  enemyVal: 15
   enemyValIncrease: 1.06
   enemies: []
   UIT: {fileID: 844220312}
