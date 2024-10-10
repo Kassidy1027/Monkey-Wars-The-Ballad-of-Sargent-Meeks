@@ -19,6 +19,8 @@ public class FirstPersonController : MonoBehaviour
     private Rigidbody rb;
     private bool gameStarted;
 
+    private WeaponSwap playerWeapon;
+
     #region Camera Movement Variables
 
     public Camera playerCamera;
@@ -135,6 +137,7 @@ public class FirstPersonController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        playerWeapon = GetComponent<WeaponSwap>();
 
         crosshairObject = GetComponentInChildren<Image>();
 
@@ -537,6 +540,22 @@ public class FirstPersonController : MonoBehaviour
             // Resets when play stops moving
             timer = 0;
             joint.localPosition = new Vector3(Mathf.Lerp(joint.localPosition.x, jointOriginalPos.x, Time.deltaTime * bobSpeed), Mathf.Lerp(joint.localPosition.y, jointOriginalPos.y, Time.deltaTime * bobSpeed), Mathf.Lerp(joint.localPosition.z, jointOriginalPos.z, Time.deltaTime * bobSpeed));
+        }
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "AmmoDrop")
+        {
+            if (playerWeapon.currentWeapon.type == WeaponType.Raycast)
+            {
+                playerWeapon.currentWeapon.reserveAmmo += 100;
+            }
+            else if (playerWeapon.currentWeapon.type == WeaponType.Projectile)
+            {
+                playerWeapon.currentWeapon.reserveAmmo += 16;
+            }
+            Destroy(other.gameObject);
         }
     }
 }

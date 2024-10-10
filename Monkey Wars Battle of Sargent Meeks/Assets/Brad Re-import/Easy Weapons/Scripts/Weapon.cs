@@ -301,7 +301,7 @@ public class Weapon : MonoBehaviour
         }
 
         // Initialize the default bullet hole pools list
-        for (int i = 0; i < defaultBulletHolePoolNames.Count; i++)
+        /*for (int i = 0; i < defaultBulletHolePoolNames.Count; i++)
         {
             GameObject g = GameObject.Find(defaultBulletHolePoolNames[i]);
 
@@ -309,7 +309,7 @@ public class Weapon : MonoBehaviour
                 defaultBulletHoles[i] = g.GetComponent<BulletHolePool>();
             else
                 Debug.LogWarning("Default Bullet Hole Pool does not have a BulletHolePool component.  Please assign GameObjects in the inspector that have the BulletHolePool component.");
-        }
+        }*/
     }
 
     private void OnTriggerEnter(Collider other)

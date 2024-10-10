@@ -6,9 +6,7 @@ public class WeaponSwap : MonoBehaviour
 {
     private bool gameIsStart;
 
-    private Weapon currentWeapon;
-
-
+    public Weapon currentWeapon;
 
     public bool weapon2;
     public bool weapon3;

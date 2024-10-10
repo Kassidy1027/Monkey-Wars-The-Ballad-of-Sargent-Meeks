@@ -4,18 +4,10 @@ using UnityEngine;
 
 public class AmmoPickup : MonoBehaviour
 {
+    public Animator animator;
+
     void Start()
     {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        
+        animator = GetComponent<Animator>();
     }
 }
