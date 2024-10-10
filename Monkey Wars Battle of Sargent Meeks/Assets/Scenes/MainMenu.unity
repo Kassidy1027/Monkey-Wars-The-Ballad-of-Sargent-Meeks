@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 26, y: -2.0051}
-  m_SizeDelta: {x: 298.6808, y: 436.1487}
+  m_AnchoredPosition: {x: 26, y: -2.0053}
+  m_SizeDelta: {x: 276.4241, y: 436.15}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &141463010
 MonoBehaviour:
@@ -367,11 +367,11 @@ RectTransform:
   - {fileID: 1234872447}
   m_Father: {fileID: 2081656338}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 277.9589, y: 50.1589}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 215.92055}
+  m_SizeDelta: {x: 277.9589, y: 50.158905}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &397692114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,8 +500,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -9.705566, y: 0.1149}
-  m_SizeDelta: {x: 279.9944, y: 418.3702}
+  m_AnchoredPosition: {x: -4.6459, y: 0.1149}
+  m_SizeDelta: {x: 266.8087, y: 418.3702}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &691204580
 MonoBehaviour:
@@ -525,14 +525,23 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Controls:
 
-    * WASD Movement
+    * WASD: Movement
 
-    * Shift Sprint
+    * Space: Jump
 
-    * Left Click Shoot
+    * Shift: Sprint
 
     *
-    Right Click Zoom
+    Left Click: Shoot
+
+    * Right Click: Zoom
+
+    * 1-4: Change Weapons
+
+    *
+    E: Interact/Market
+
+    * ESC: Pause Menu
 
 '
   m_isRightToLeft: 0
@@ -561,8 +570,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -737,11 +746,11 @@ RectTransform:
   - {fileID: 1899995486}
   m_Father: {fileID: 2081656338}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000038146973, y: -130}
-  m_SizeDelta: {x: 277.9589, y: 50.1589}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 85.92056}
+  m_SizeDelta: {x: 277.9589, y: 50.158905}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1042029954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -786,13 +795,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 141463008}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 2081656339}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: PanelActivation
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 141463008}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -870,11 +879,11 @@ RectTransform:
   - {fileID: 1309656558}
   m_Father: {fileID: 2081656338}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -195}
-  m_SizeDelta: {x: 277.9589, y: 50.1589}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 20.920547}
+  m_SizeDelta: {x: 277.9589, y: 50.158905}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1108426420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1003,11 +1012,11 @@ RectTransform:
   - {fileID: 235706116}
   m_Father: {fileID: 2081656338}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000038146973, y: -65}
-  m_SizeDelta: {x: 277.9589, y: 50.1589}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 150.92055}
+  m_SizeDelta: {x: 277.9589, y: 50.158905}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1168366816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1052,13 +1061,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1449078007}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 2081656339}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: PanelActivation
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 1449078007}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1642,8 +1651,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -23.968, y: -2.0054}
-  m_SizeDelta: {x: 298.6808, y: 436.1487}
+  m_AnchoredPosition: {x: -23.968, y: -2.005}
+  m_SizeDelta: {x: 278.3263, y: 436.15}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1449078009
 MonoBehaviour:
@@ -1718,7 +1727,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -9.7056, y: 0.1149}
-  m_SizeDelta: {x: 279.9944, y: 418.3702}
+  m_SizeDelta: {x: 260.6092, y: 418.3702}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1712019743
 MonoBehaviour:
@@ -1742,7 +1751,12 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Objectives:
 
-    *'
+    * Shoot Enemy Monkies
+
+    * Survive as Many Rounds as
+    Possible
+
+    * Make Purchases in Market for Upgrades'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1769,8 +1783,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2002,10 +2016,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
