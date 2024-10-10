@@ -12,7 +12,13 @@ public class UIController : MonoBehaviour
      * VARIABLES/OBJECTS
      */
 
+    // Variable to Hold the Scene Number 
     private int sceneNumber;
+
+    // Variable to Determine if the Panels are Active or Not
+    private bool isPanelActive = false;
+
+    private GameObject panel;
 
 
 
@@ -50,6 +56,32 @@ public class UIController : MonoBehaviour
     {
         // Exiting the Game 
         Application.Quit();
+
+    } // END OF METHOD
+
+
+    // Method that Controls the Activation of the Objectives/Controls Panel
+    public void PanelActivation(GameObject panel)
+    {
+        // Checking if the Panels are Active 
+        if (isPanelActive)
+        {
+            // Setting the Panel to Inactive
+            panel.SetActive(false);
+
+            // Reset Boolean
+            isPanelActive = false;
+
+        }
+        else
+        {
+            // Setting the Panel to Active
+            panel.SetActive(true);
+
+            // Reset Boolean
+            isPanelActive = true;
+
+        } // END OF IF/ELSE
 
     } // END OF METHOD
 }
