@@ -555,7 +555,7 @@ public class FirstPersonController : MonoBehaviour
             {
                 playerWeapon.currentWeapon.reserveAmmo += 16;
             }
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
     }
 }
