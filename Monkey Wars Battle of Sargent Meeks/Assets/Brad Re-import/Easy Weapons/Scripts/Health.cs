@@ -30,6 +30,7 @@ public class Health : MonoBehaviour
 
 	private Camera deathCamera;
 	private bool gameStarts;
+	public UIHealthManager UIHM;				// controls the script for managing the health bar
 
 	// Use this for initialization
 	void Start()
@@ -64,14 +65,22 @@ public class Health : MonoBehaviour
 	{
 		// Change the health by the amount specified in the amount variable
 		currentHealth += amount;
+		if (isPlayer)
+		{
+			UIHM.UpdateVals();
+		}
 
 		// If the health runs out, then Die.
 		if (currentHealth <= 0 && !dead && canDie)
+		{
 			Die();
+		}
 
 		// Make sure that the health never exceeds the maximum health
 		else if (currentHealth > maxHealth)
+		{
 			currentHealth = maxHealth;
+		}
 	}
 
 	public void Die()
