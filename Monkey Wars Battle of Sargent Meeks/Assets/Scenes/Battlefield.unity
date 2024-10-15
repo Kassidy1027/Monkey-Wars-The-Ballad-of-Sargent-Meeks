@@ -57139,6 +57139,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2054327463}
     m_Modifications:
+    - target: {fileID: 628511249859111014, guid: 2591709d1978df649aebd5b6b0a68773, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: d9624e96ba60abd489a4cf7a8552c9f3, type: 2}
     - target: {fileID: 1420911894346058163, guid: 2591709d1978df649aebd5b6b0a68773, type: 3}
       propertyPath: m_Name
       value: tent_001 (4)
