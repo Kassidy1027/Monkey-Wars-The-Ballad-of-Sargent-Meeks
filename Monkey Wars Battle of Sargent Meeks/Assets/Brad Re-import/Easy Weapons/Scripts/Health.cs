@@ -8,6 +8,8 @@
 
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
+using static UnityEngine.GraphicsBuffer;
 
 public class Health : MonoBehaviour
 {
@@ -97,6 +99,23 @@ public class Health : MonoBehaviour
 		if (isPlayer && deathCam != null)
 			deathCamera.enabled = true;
 
+		if (this.tag == "Enemy")
+		{
+			float randomDrop = Random.Range(0, 10);
+
+			if (randomDrop <= .5)
+			{
+				GameObject ammoDrop = ObjectPool.SharedInstance.GetPooledObject();
+				if (ammoDrop != null)
+				{
+					ammoDrop.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z);
+					ammoDrop.SetActive(true);
+					StartCoroutine(DespawnAmmo(ammoDrop));
+				}
+			}
+            
+        }
+
 		// Remove this GameObject from the scene
 		Destroy(gameObject);
 	}
@@ -108,4 +127,10 @@ public class Health : MonoBehaviour
             GUI.Label(new Rect(10, Screen.height - 70, 300, 100), "Health: " + currentHealth + "/" + maxHealth);
         }
     }
+
+	private IEnumerator DespawnAmmo(GameObject ammo)
+	{
+		yield return new WaitForSeconds(20.0f);
+		ammo.SetActive(false);
+	}
 }
