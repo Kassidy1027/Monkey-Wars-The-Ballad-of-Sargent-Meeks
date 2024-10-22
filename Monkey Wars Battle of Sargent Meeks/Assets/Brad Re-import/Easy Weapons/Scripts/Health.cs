@@ -32,7 +32,10 @@ public class Health : MonoBehaviour
 
 	private Camera deathCamera;
 	private bool gameStarts;
-	public UIHealthManager UIHM;				// controls the script for managing the health bar
+	public UIHealthManager UIHM;                // controls the script for managing the health bar
+
+	public bool hasRevive;						// works for the Revive ability
+
 
 	// Use this for initialization
 	void Start()
@@ -87,6 +90,14 @@ public class Health : MonoBehaviour
 
 	public void Die()
 	{
+		// check if the player has a revive
+		if(isPlayer && hasRevive)
+		{
+			currentHealth = maxHealth;
+			hasRevive = false;
+			return;
+		}
+
 		// This GameObject is officially dead.  This is used to make sure the Die() function isn't called again
 		dead = true;
 
