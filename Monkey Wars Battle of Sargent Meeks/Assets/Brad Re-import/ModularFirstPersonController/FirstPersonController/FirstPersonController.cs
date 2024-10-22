@@ -21,6 +21,8 @@ public class FirstPersonController : MonoBehaviour
 
     private WeaponSwap playerWeapon;
 
+    public BoxCollider interactionBox;
+
     #region Camera Movement Variables
 
     public Camera playerCamera;
@@ -139,6 +141,8 @@ public class FirstPersonController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         playerWeapon = GetComponent<WeaponSwap>();
 
+        interactionBox = GetComponent<BoxCollider>();
+
         crosshairObject = GetComponentInChildren<Image>();
 
         // Set internal variables
@@ -156,6 +160,7 @@ public class FirstPersonController : MonoBehaviour
     void Start()
     {
         gameStarted = false;
+        interactionBox.enabled = false;
         if(lockCursor)
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -378,6 +383,12 @@ public class FirstPersonController : MonoBehaviour
             enableSprint = true;
             enableJump = true;
         }
+
+        if (Input.GetKeyDown("e"))
+        {
+            interactionBox.enabled = true;
+            StartCoroutine(DisableBox());
+        }
     }
 
     void FixedUpdate()
@@ -557,6 +568,12 @@ public class FirstPersonController : MonoBehaviour
             }
             other.gameObject.SetActive(false);
         }
+    }
+
+    IEnumerator DisableBox()
+    {
+        yield return new WaitForSeconds(0.3f);
+        interactionBox.enabled = false;
     }
 }
 

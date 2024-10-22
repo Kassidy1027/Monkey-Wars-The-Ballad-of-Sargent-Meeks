@@ -50,6 +50,9 @@ public class EnemyBehavior : MonoBehaviour
     // cost = how much enemy costs to be spawned by wave system
     public int cost;
 
+    // pointValue = how many points an enemy will give you when you defeat them
+    public int pointValue;
+
     private void Awake()
     {
         // Set nav mesh agent and player transforms
