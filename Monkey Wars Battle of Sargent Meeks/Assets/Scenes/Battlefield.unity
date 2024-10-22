@@ -28809,7 +28809,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roundText: {fileID: 1906220781}
   enemyText: {fileID: 1050087998}
-  pointsText: {fileID: 0}
+  pointsText: {fileID: 1179495431}
 --- !u!114 &814847024
 MonoBehaviour:
   m_ObjectHideFlags: 0
