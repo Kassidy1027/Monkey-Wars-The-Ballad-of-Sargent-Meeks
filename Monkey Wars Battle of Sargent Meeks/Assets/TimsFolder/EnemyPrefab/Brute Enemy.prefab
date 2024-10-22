@@ -3673,6 +3673,9 @@ MonoBehaviour:
   explosion: {fileID: 0}
   isPlayer: 0
   deathCam: {fileID: 0}
+  dead: 0
+  UIHM: {fileID: 0}
+  hasRevive: 0
 --- !u!54 &7309746493925958814
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3757,6 +3760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  playerPoints: {fileID: 0}
   groundCheck:
     serializedVersion: 2
     m_Bits: 8
@@ -3766,6 +3770,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   gun: {fileID: 2439284849844206708}
   playerHealth: {fileID: 0}
+  myHealth: {fileID: 0}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   wc: {fileID: 2439284849834235060}
@@ -3778,6 +3783,7 @@ MonoBehaviour:
   playerInSight: 0
   playerInRange: 0
   cost: 30
+  pointValue: 20
 --- !u!195 &5563479098867491238
 NavMeshAgent:
   m_ObjectHideFlags: 0

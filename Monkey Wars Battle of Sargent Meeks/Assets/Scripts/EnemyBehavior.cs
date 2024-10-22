@@ -12,10 +12,12 @@ public class EnemyBehavior : MonoBehaviour
     // Components
     private NavMeshAgent agent;
     public Transform player;
+    public FirstPersonController playerPoints;
     public LayerMask groundCheck, playerCheck;
     public Animator animator;
     public Transform gun;
     public Health playerHealth;
+    public Health myHealth;
 
     // Patrolling Variables
     /*
@@ -51,7 +53,8 @@ public class EnemyBehavior : MonoBehaviour
     public int cost;
 
     // pointValue = how many points an enemy will give you when you defeat them
-    public int pointValue;
+    public int pointValue = 1;
+    private bool pointsAwarded = false;
 
     private void Awake()
     {
@@ -62,11 +65,18 @@ public class EnemyBehavior : MonoBehaviour
 
     private void Start()
     {
+        playerPoints = player.gameObject.GetComponent<FirstPersonController>();
         playerHealth = player.gameObject.GetComponent<Health>();
+        myHealth = GetComponent<Health>();
     }
 
     private void Update()
     {
+        if (myHealth.dead && !pointsAwarded)
+        {
+            playerPoints.UpdatePoints(pointValue);
+            pointsAwarded = true;
+        }
         if (canAttack)
         {
             // Check sight and attack range for player

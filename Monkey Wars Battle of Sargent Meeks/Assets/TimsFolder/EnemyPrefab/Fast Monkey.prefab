@@ -3824,6 +3824,7 @@ MonoBehaviour:
   infiniteAmmo: 1
   ammoCapacity: 16
   shotPerRound: 1
+  reserveAmmo: 0
   reloadTime: 1.6
   showCurrentAmmo: 0
   reloadAutomatically: 1
@@ -4666,6 +4667,9 @@ MonoBehaviour:
   explosion: {fileID: 0}
   isPlayer: 0
   deathCam: {fileID: 0}
+  dead: 0
+  UIHM: {fileID: 0}
+  hasRevive: 0
 --- !u!54 &5090139462243371341
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4750,6 +4754,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  playerPoints: {fileID: 0}
   groundCheck:
     serializedVersion: 2
     m_Bits: 8
@@ -4759,6 +4764,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   gun: {fileID: 2536380498947420182}
   playerHealth: {fileID: 0}
+  myHealth: {fileID: 0}
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 1
   wc: {fileID: 2536380498936405842}
@@ -4771,6 +4777,7 @@ MonoBehaviour:
   playerInSight: 0
   playerInRange: 0
   cost: 6
+  pointValue: 15
 --- !u!195 &3829362172033553172
 NavMeshAgent:
   m_ObjectHideFlags: 0

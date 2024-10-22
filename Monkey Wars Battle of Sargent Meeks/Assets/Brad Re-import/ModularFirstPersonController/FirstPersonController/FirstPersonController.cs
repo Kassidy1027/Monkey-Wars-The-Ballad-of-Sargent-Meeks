@@ -21,7 +21,13 @@ public class FirstPersonController : MonoBehaviour
 
     private WeaponSwap playerWeapon;
 
-    public BoxCollider interactionBox;
+    public UITextController UIT;
+
+    private BoxCollider interactionBox;
+
+    private Health playerHealth;
+
+    public int points;
 
     #region Camera Movement Variables
 
@@ -140,9 +146,8 @@ public class FirstPersonController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         playerWeapon = GetComponent<WeaponSwap>();
-
         interactionBox = GetComponent<BoxCollider>();
-
+        playerHealth = GetComponent<Health>();
         crosshairObject = GetComponentInChildren<Image>();
 
         // Set internal variables
@@ -486,6 +491,12 @@ public class FirstPersonController : MonoBehaviour
         }
     }
 
+    public void UpdatePoints(int value)
+    {
+        points += value;
+        UIT.UpdatePointCount(points);
+    }
+
     private void Jump()
     {
         // Adds force to the player rigidbody to jump
@@ -567,6 +578,11 @@ public class FirstPersonController : MonoBehaviour
                 playerWeapon.currentWeapon.reserveAmmo += 16;
             }
             other.gameObject.SetActive(false);
+        }
+
+        if (other.gameObject.tag == "GodsSecondGrace" && !playerHealth.hasRevive)
+        {
+            playerHealth.hasRevive = true;
         }
     }
 

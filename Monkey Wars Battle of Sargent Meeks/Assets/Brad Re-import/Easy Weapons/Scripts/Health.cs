@@ -28,7 +28,7 @@ public class Health : MonoBehaviour
 	public bool isPlayer = false;				// Whether or not this health is the player
 	public GameObject deathCam;					// The camera to activate when the player dies
 
-	private bool dead = false;                  // Used to make sure the Die() function isn't called twice
+	public bool dead = false;                  // Used to make sure the Die() function isn't called twice
 
 	private Camera deathCamera;
 	private bool gameStarts;
