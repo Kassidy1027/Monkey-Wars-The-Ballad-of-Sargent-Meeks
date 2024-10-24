@@ -34,14 +34,21 @@ public class Health : MonoBehaviour
 	private bool gameStarts;
 	public UIHealthManager UIHM;                // controls the script for managing the health bar
 
-	public bool hasRevive;						// works for the Revive ability
+	public bool hasRevive;                      // works for the Revive ability
+
+	public int pointValue = 10;
+    public FirstPersonController playerPoints;
+    public GameObject player;
 
 
-	// Use this for initialization
-	void Start()
+    // Use this for initialization
+    void Start()
 	{
-		// Initialize the currentHealth variable to the value specified by the user in startingHealth		
-		try
+		UIHM = GameObject.Find("Canvas").GetComponent<UIHealthManager>();
+        player = GameObject.Find("Player");
+        playerPoints = player.gameObject.GetComponent<FirstPersonController>();
+        // Initialize the currentHealth variable to the value specified by the user in startingHealth		
+        try
 		{
 			if(deathCam != null)
 				deathCamera = deathCam.GetComponent<Camera>();
@@ -113,8 +120,9 @@ public class Health : MonoBehaviour
 		if (this.tag == "Enemy")
 		{
 			float randomDrop = Random.Range(0, 10);
+            playerPoints.UpdatePoints(pointValue);
 
-			if (randomDrop <= .5)
+            if (randomDrop <= .5)
 			{
 				GameObject ammoDrop = ObjectPool.SharedInstance.GetPooledObject();
 				if (ammoDrop != null)

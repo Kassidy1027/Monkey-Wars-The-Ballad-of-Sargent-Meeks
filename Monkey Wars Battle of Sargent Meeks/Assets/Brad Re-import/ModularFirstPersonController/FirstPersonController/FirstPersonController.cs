@@ -149,6 +149,7 @@ public class FirstPersonController : MonoBehaviour
         interactionBox = GetComponent<BoxCollider>();
         playerHealth = GetComponent<Health>();
         crosshairObject = GetComponentInChildren<Image>();
+        UIT = GameObject.Find("Canvas").GetComponent<UITextController>();
 
         // Set internal variables
         playerCamera.fieldOfView = fov;
@@ -495,6 +496,7 @@ public class FirstPersonController : MonoBehaviour
     {
         points += value;
         UIT.UpdatePointCount(points);
+        Debug.Log("Points awarded");
     }
 
     private void Jump()
