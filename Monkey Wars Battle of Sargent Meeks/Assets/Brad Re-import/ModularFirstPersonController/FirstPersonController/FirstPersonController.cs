@@ -580,10 +580,17 @@ public class FirstPersonController : MonoBehaviour
             other.gameObject.SetActive(false);
         }
 
-        if (other.gameObject.tag == "GodsSecondGrace" && !playerHealth.hasRevive)
-        {
-            other.GetComponent<ItemRevive>().Buy();
-        }
+        if(!playerHealth.hasRevive)
+            switch (other.gameObject.tag)
+            {
+                case "GodsSecondGrace":
+                    other.GetComponent<ItemRevive>().Buy();
+                    break;
+
+                default:
+                    break;
+            }
+
     }
 
     IEnumerator DisableBox()

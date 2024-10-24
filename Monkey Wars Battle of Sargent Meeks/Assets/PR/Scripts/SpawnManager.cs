@@ -104,7 +104,7 @@ public class SpawnManager : MonoBehaviour
                 {
                     // spawn the enemy and reduce the current cost
                     // also increase the number of enemies to track over the round
-                    Debug.Log("Spawning!!");
+                    //Debug.Log("Spawning!!");
                     StartCoroutine(SpawnObject(enemyTypes[i], Random.Range(0.1f, 15.5f)) );
                     currVal -= cost;
 
