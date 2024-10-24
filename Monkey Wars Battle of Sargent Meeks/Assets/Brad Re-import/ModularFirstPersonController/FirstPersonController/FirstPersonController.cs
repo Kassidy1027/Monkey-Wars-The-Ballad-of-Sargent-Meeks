@@ -582,7 +582,7 @@ public class FirstPersonController : MonoBehaviour
 
         if (other.gameObject.tag == "GodsSecondGrace" && !playerHealth.hasRevive)
         {
-            other.GetComponent<ShopItemBuyManager>().Buy();
+            other.GetComponent<ItemRevive>().Buy();
         }
     }
 

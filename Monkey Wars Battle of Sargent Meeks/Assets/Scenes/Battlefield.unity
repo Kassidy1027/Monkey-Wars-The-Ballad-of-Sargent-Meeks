@@ -24894,14 +24894,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 125014257}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f143b917fa742c84a8ae378104c85956, type: 3}
+  m_Script: {fileID: 11500000, guid: 90c3bac7fb4544440b078356bc7b0a7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStatToChange: hasRevive
   price: 1000
-  priceIncreaseMulti: 1
-  player: {fileID: 2048946787}
   priceText: {fileID: 637333437}
+  priceIncreaseMult: 1
+  Player: {fileID: 0}
 --- !u!1001 &683152766
 PrefabInstance:
   m_ObjectHideFlags: 0
