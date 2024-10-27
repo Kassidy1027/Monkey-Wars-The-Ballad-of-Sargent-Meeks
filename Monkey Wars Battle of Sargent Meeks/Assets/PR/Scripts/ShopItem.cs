@@ -8,6 +8,7 @@ public class ShopItem : MonoBehaviour
     public TMPro.TMP_Text priceText;
     public float priceIncreaseMult = 1.0f;
     public GameObject Player;
+    public FirstPersonController points;
 
     void Start()
     {
@@ -18,6 +19,7 @@ public class ShopItem : MonoBehaviour
     public void FindPlayer()
     {
         Player = GameObject.FindWithTag("Player");
+        points = Player.GetComponent<FirstPersonController>();
     }
     public void UpdatePriceText()
     {

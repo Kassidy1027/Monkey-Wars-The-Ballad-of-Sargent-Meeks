@@ -235,7 +235,11 @@ public class Weapon : MonoBehaviour
             playerHealth = player.GetComponent<Health>();
         }
 
-        if (type == WeaponType.Raycast)
+        if (type == WeaponType.Raycast && ammoCapacity == 16)
+        {
+            reserveAmmo = 400;
+        }
+        else if (type == WeaponType.Raycast)
         {
             reserveAmmo = 200;
         }

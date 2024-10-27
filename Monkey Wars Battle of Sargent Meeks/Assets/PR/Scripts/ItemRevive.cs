@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class ItemRevive : ShopItem
 {
+    public GameObject reviveSprite;
     public void Buy()
     {
-        Player.GetComponent<Health>().hasRevive = true;
-        PriceIncrease();
+        if (points.points >= price)
+        {
+            reviveSprite.SetActive(true);
+            Player.GetComponent<Health>().hasRevive = true;
+            points.UpdatePoints(price * -1);
+            PriceIncrease();
+        }
     }
 }

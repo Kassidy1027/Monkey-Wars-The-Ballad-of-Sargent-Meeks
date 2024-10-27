@@ -39,13 +39,20 @@ public class Health : MonoBehaviour
 	public int pointValue = 10;
     public FirstPersonController playerPoints;
     public GameObject player;
+	public WeaponSwap ws;
+
+    public GameObject reviveSprite;
 
 
     // Use this for initialization
     void Start()
 	{
-		UIHM = GameObject.Find("Canvas").GetComponent<UIHealthManager>();
+		if (isPlayer)
+		{
+            reviveSprite.SetActive(false);
+        }
         player = GameObject.Find("Player");
+		ws = player.GetComponent<WeaponSwap>();
         playerPoints = player.gameObject.GetComponent<FirstPersonController>();
         // Initialize the currentHealth variable to the value specified by the user in startingHealth		
         try
@@ -97,16 +104,18 @@ public class Health : MonoBehaviour
 
 	public void Die()
 	{
-		// check if the player has a revive
-		if(isPlayer && hasRevive)
+        // This GameObject is officially dead.  This is used to make sure the Die() function isn't called again
+        dead = true;
+
+        // check if the player has a revive
+        if (isPlayer && hasRevive)
 		{
 			currentHealth = maxHealth;
 			hasRevive = false;
-			return;
+			dead = false;
+            reviveSprite.SetActive(false);
+            return;
 		}
-
-		// This GameObject is officially dead.  This is used to make sure the Die() function isn't called again
-		dead = true;
 
 		// Make death effects
 		if (replaceWhenDead)
@@ -114,15 +123,16 @@ public class Health : MonoBehaviour
 		if (makeExplosion)
 			Instantiate(explosion, transform.position, transform.rotation);
 
-		if (isPlayer && deathCam != null)
+		if (isPlayer && deathCam != null && dead)
 			deathCamera.enabled = true;
 
+		// Loot drops
 		if (this.tag == "Enemy")
 		{
 			float randomDrop = Random.Range(0, 10);
             playerPoints.UpdatePoints(pointValue);
 
-            if (randomDrop <= .5)
+            if (randomDrop <= 2)
 			{
 				GameObject ammoDrop = ObjectPool.SharedInstance.GetPooledObject();
 				if (ammoDrop != null)
@@ -132,11 +142,23 @@ public class Health : MonoBehaviour
 					StartCoroutine(DespawnAmmo(ammoDrop));
 				}
 			}
-            
+			else if (randomDrop >= 8)
+			{
+                GameObject healthDrop = ObjectPool2.SharedInstance.GetPooledObject();
+				if (healthDrop != null)
+				{
+                    healthDrop.transform.position = new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z);
+                    healthDrop.SetActive(true);
+                    StartCoroutine(DespawnAmmo(healthDrop));
+                }
+            }
         }
 
-		// Remove this GameObject from the scene
-		Destroy(gameObject);
+		if (dead)
+		{
+            // Remove this GameObject from the scene
+            Destroy(gameObject);
+        }
 	}
 
 	void OnGUI()

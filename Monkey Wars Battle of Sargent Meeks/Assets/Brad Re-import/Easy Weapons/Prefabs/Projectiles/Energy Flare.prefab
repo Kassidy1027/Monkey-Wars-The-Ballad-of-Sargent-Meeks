@@ -4765,7 +4765,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8cf8baaae9d31704aae9a27a7a1405c8, type: 2}
+  - {fileID: 2100000, guid: f01327398ae947e45bf6e607b4d3cc07, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9592,7 +9592,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b641d02d10937b5409dbbadd4ab54c3b, type: 2}
+  - {fileID: 2100000, guid: 73ba3e5b56e694043874fd1e395c002e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9745,7 +9745,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileType: 0
   damageType: 1
-  damage: 20
+  damage: 100
   speed: 30
   initialForce: 0
   lifetime: 20
@@ -9800,7 +9800,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.1544118, g: 0.5451319, b: 1, a: 1}
-  m_Intensity: 1667.4097
+  m_Intensity: 5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -14615,7 +14615,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a790b9fa7cf6c0a44bc991744f7ea7d8, type: 2}
+  - {fileID: 2100000, guid: b80b3d7335f4c1d4fb25d3f35bcfe2ea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

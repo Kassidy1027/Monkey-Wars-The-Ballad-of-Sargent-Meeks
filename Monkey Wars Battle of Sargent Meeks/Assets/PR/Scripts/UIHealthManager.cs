@@ -21,6 +21,7 @@ public class UIHealthManager : MonoBehaviour
     // Called when the halth value changes
     public void UpdateVals()
     {
+        hpBar.maxValue = playerHealth.maxHealth;
         hpBar.value = playerHealth.currentHealth;
         healthText.text = "HP: " + hpBar.value.ToString();
     }

@@ -11,6 +11,12 @@ TagManager:
   - Team2
   - AmmoDrop
   - GodsSecondGrace
+  - MonkeysMight
+  - HyperCherry
+  - BuyableLaserGun
+  - HealthDrop
+  - BuyablePistol
+  - BuyableBombLauncher
   layers:
   - Default
   - TransparentFX

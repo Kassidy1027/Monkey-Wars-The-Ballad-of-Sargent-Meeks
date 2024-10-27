@@ -144,12 +144,12 @@ public class FirstPersonController : MonoBehaviour
 
     private void Awake()
     {
+        UpdatePoints(points);
         rb = GetComponent<Rigidbody>();
         playerWeapon = GetComponent<WeaponSwap>();
         interactionBox = GetComponent<BoxCollider>();
         playerHealth = GetComponent<Health>();
         crosshairObject = GetComponentInChildren<Image>();
-        UIT = GameObject.Find("Canvas").GetComponent<UITextController>();
 
         // Set internal variables
         playerCamera.fieldOfView = fov;
@@ -582,16 +582,39 @@ public class FirstPersonController : MonoBehaviour
             other.gameObject.SetActive(false);
         }
 
-        if(!playerHealth.hasRevive)
-            switch (other.gameObject.tag)
-            {
-                case "GodsSecondGrace":
-                    other.GetComponent<ItemRevive>().Buy();
-                    break;
+        if (other.gameObject.tag == "HealthDrop")
+        {
+            playerHealth.ChangeHealth(25);
+            other.gameObject.SetActive(false);
+        }
 
-                default:
-                    break;
-            }
+        switch (other.gameObject.tag)
+        {
+            case "GodsSecondGrace":
+                if (!playerHealth.hasRevive)
+                {
+                    other.GetComponent<ItemRevive>().Buy();
+                }
+                break;
+            case "MonkeysMight":
+                other.GetComponent<ItemMaxHealth>().Buy();
+                break;
+            case "HyperCherry":
+                other.GetComponent<ItemMoveSpeed>().Buy();
+                break;
+            case "BuyableLaserGun":
+                other.GetComponent<ItemLaserGun>().Buy();
+                break;
+            case "BuyablePistol":
+                other.GetComponent<ItemPistol>().Buy();
+                break;
+            case "BuyableBombLauncher":
+                other.GetComponent<ItemBombLauncher>().Buy();
+                break;
+
+            default:
+                break;
+        }
 
     }
 
@@ -605,6 +628,7 @@ public class FirstPersonController : MonoBehaviour
 
 
 // Custom Editor
+/*
 #if UNITY_EDITOR
     [CustomEditor(typeof(FirstPersonController)), InitializeOnLoadAttribute]
     public class FirstPersonControllerEditor : Editor
@@ -814,3 +838,4 @@ public class FirstPersonController : MonoBehaviour
 }
 
 #endif
+*/
