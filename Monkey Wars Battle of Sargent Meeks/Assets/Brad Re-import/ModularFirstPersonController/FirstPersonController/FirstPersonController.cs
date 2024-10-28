@@ -69,6 +69,7 @@ public class FirstPersonController : MonoBehaviour
     public bool playerCanMove = true;
     public float walkSpeed = 5f;
     public float maxVelocityChange = 10f;
+    private float speed;
 
     // Internal Variables
     private bool isWalking = false;
@@ -120,7 +121,7 @@ public class FirstPersonController : MonoBehaviour
     public bool holdToCrouch = true;
     public KeyCode crouchKey = KeyCode.LeftControl;
     public float crouchHeight = .75f;
-    public float speedReduction = .5f;
+    public float crouchSpeed = 2.5f;
 
     // Internal Variables
     private bool isCrouched = false;
@@ -522,7 +523,7 @@ public class FirstPersonController : MonoBehaviour
         if(isCrouched)
         {
             transform.localScale = new Vector3(originalScale.x, originalScale.y, originalScale.z);
-            walkSpeed /= speedReduction;
+            speed = crouchSpeed;
 
             isCrouched = false;
         }
@@ -531,7 +532,7 @@ public class FirstPersonController : MonoBehaviour
         else
         {
             transform.localScale = new Vector3(originalScale.x, crouchHeight, originalScale.z);
-            walkSpeed *= speedReduction;
+            speed = walkSpeed;
 
             isCrouched = true;
         }
@@ -549,7 +550,7 @@ public class FirstPersonController : MonoBehaviour
             // Calculates HeadBob speed during crouched movement
             else if (isCrouched)
             {
-                timer += Time.deltaTime * (bobSpeed * speedReduction);
+                timer += Time.deltaTime * (bobSpeed * crouchSpeed);
             }
             // Calculates HeadBob speed during walking
             else
