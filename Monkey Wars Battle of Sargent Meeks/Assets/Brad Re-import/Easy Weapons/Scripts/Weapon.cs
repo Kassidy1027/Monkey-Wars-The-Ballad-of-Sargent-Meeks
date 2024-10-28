@@ -360,7 +360,7 @@ public class Weapon : MonoBehaviour
         }
 
         // Reload if the weapon is out of ammo
-        if (reloadAutomatically && currentAmmo <= 0)
+        if (reloadAutomatically && currentAmmo <= 0 && reserveAmmo > 0)
             Reload();
 
         // Recoil Recovery
@@ -1159,24 +1159,24 @@ public class Weapon : MonoBehaviour
     {
         if (reserveAmmo > 0)
         {
-            int tempAmmo = currentAmmo;
-            if (reserveAmmo >= ammoCapacity)
+            int missingAmmo = ammoCapacity - currentAmmo;
+            if (reserveAmmo >= missingAmmo)
             {
                 currentAmmo = ammoCapacity;
-                reserveAmmo -= (ammoCapacity - tempAmmo);
+                reserveAmmo -= missingAmmo;
             }
             else
             {
-                currentAmmo = reserveAmmo;
+                currentAmmo += reserveAmmo;
                 reserveAmmo = 0;
             }
             
             fireTimer = -reloadTime;
             GetComponent<AudioSource>().PlayOneShot(reloadSound);
-        }
 
-        // Send a messsage so that users can do other actions whenever this happens
-        SendMessageUpwards("OnEasyWeaponsReload", SendMessageOptions.DontRequireReceiver);
+            // Send a messsage so that users can do other actions whenever this happens
+            SendMessageUpwards("OnEasyWeaponsReload", SendMessageOptions.DontRequireReceiver);
+        }
     }
 
     // When the weapon tries to fire without any ammo
