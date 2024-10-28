@@ -168,6 +168,8 @@ public class FirstPersonController : MonoBehaviour
     {
         gameStarted = false;
         interactionBox.enabled = false;
+        speed = walkSpeed;
+
         if(lockCursor)
         {
             Cursor.lockState = CursorLockMode.Locked;
@@ -459,7 +461,7 @@ public class FirstPersonController : MonoBehaviour
                     sprintBarCG.alpha -= 3 * Time.deltaTime;
                 }
 
-                targetVelocity = transform.TransformDirection(targetVelocity) * walkSpeed;
+                targetVelocity = transform.TransformDirection(targetVelocity) * speed;
 
                 // Apply a force that attempts to reach our target velocity
                 Vector3 velocity = rb.velocity;
@@ -523,7 +525,7 @@ public class FirstPersonController : MonoBehaviour
         if(isCrouched)
         {
             transform.localScale = new Vector3(originalScale.x, originalScale.y, originalScale.z);
-            speed = crouchSpeed;
+            speed = walkSpeed;
 
             isCrouched = false;
         }
@@ -532,7 +534,7 @@ public class FirstPersonController : MonoBehaviour
         else
         {
             transform.localScale = new Vector3(originalScale.x, crouchHeight, originalScale.z);
-            speed = walkSpeed;
+            speed = crouchSpeed;
 
             isCrouched = true;
         }

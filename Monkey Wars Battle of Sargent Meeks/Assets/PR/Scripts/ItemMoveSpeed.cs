@@ -9,8 +9,9 @@ public class ItemMoveSpeed : ShopItem
         if (points.points >= price)
         {
             FirstPersonController speed = Player.GetComponent<FirstPersonController>();
-            speed.walkSpeed += 1;
-            speed.sprintSpeed += 1;
+            speed.walkSpeed++;
+            speed.sprintSpeed++;
+            speed.crouchSpeed++;
             points.UpdatePoints(price * -1);
             PriceIncrease();
         }
