@@ -275,6 +275,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 4459864850019384750, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2074237176, guid: 6bacecc4f3df9584198879c73a6b6c36, type: 3}
     m_RemovedGameObjects: []
@@ -731,7 +735,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &844220308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -830,6 +834,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roundText: {fileID: 1183715584}
   enemyText: {fileID: 2047835721}
+  pointsText: {fileID: 0}
 --- !u!1 &1164286170
 GameObject:
   m_ObjectHideFlags: 0
@@ -1160,6 +1165,7 @@ GameObject:
   - component: {fileID: 2031473959}
   - component: {fileID: 2031473958}
   - component: {fileID: 2031473960}
+  - component: {fileID: 2031473961}
   m_Layer: 0
   m_Name: WaveSpawner
   m_TagString: Untagged
@@ -1174,7 +1180,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2031473957}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5a8f559e5d223c47b3d4f797ba7065f, type: 3}
   m_Name: 
@@ -1242,6 +1248,35 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: f04c8a4a44bc60742b9a11a7fb437e1b, type: 2}
   m_BuildHeightMesh: 0
+--- !u!114 &2031473961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031473957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8134eb9aea957409eaa2f1e9ae7f49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  s:
+    stats:
+    - name: Kills
+      desc: Destroyed {0} robots
+      amount: 0
+    - name: Rounds
+      desc: Survived {0} waves
+      amount: 0
+    - name: Buys
+      desc: Purchased {0} items
+      amount: 0
+    - name: Points
+      desc: Earned {0} points
+      amount: 0
+    - name: Walked
+      desc: Traversed {0} units
+      amount: 0
 --- !u!1 &2047835719
 GameObject:
   m_ObjectHideFlags: 0
