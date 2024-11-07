@@ -619,6 +619,9 @@ public class FirstPersonController : MonoBehaviour
             case "BuyableShotgun":
                 other.GetComponent<ItemShotgun>().Buy();
                 break;
+            case "BuyableAmmo":
+                other.GetComponent<ItemAmmo>().Buy();
+                break;
 
             default:
                 break;
