@@ -53,7 +53,14 @@ public static class StatisticManager
 
     public static void UpdateStat(string name, float a)
     {
-        statList.stats[FindStatByName(name)].amount += a;
+        try
+        {
+            statList.stats[FindStatByName(name)].amount += a;
+        }
+        catch
+        {
+            Debug.Log("Statistic could not be found, cannot update");
+        }
     }
 
     public static void ClearStats()

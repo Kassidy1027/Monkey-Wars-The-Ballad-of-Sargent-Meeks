@@ -11,6 +11,7 @@ public class ItemShotgun : ShopItem
             WeaponSwap ws = Player.GetComponent<WeaponSwap>();
             ws.weapon5 = true;
             points.UpdatePoints(price * -1);
+            UpdateStatistics();
             Destroy(this.gameObject);
         }
     }

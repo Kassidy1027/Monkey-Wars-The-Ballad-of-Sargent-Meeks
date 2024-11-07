@@ -80,6 +80,7 @@ public class SpawnManager : MonoBehaviour
         // increase round number and update text
         roundNumber++;
         UIT.UpdateRoundText(roundNumber);
+        StatisticManager.UpdateStat("Rounds", 1);
 
         DecideSpawnPoints();
         DecideSpawns();
