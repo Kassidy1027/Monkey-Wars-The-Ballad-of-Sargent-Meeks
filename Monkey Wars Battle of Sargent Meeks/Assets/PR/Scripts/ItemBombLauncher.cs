@@ -11,7 +11,8 @@ public class ItemBombLauncher : ShopItem
         {
             WeaponSwap ws = Player.GetComponent<WeaponSwap>();
             ws.weapon3 = true;
-            points.UpdatePoints(price * -1);
+            points.UpdatePoints(price * -1); 
+            UpdateStatistics();
             Destroy(this.gameObject);
         }
     }
