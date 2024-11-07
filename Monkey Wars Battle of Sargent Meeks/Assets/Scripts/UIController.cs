@@ -20,24 +20,6 @@ public class UIController : MonoBehaviour
 
     private GameObject panel;
 
-
-
-    /*
-     * UNITY DEFAULT METHODS
-     */
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     /*
      * EXTRA/CUSTOM METHODS
      */
@@ -54,6 +36,7 @@ public class UIController : MonoBehaviour
     // Method to End the Game when Player Hits Quit
     public void QuitGame()
     {
+        StatisticManager.WriteData();
         // Exiting the Game 
         Application.Quit();
 
