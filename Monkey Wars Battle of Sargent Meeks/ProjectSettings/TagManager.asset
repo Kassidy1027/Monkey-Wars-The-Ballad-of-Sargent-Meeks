@@ -18,6 +18,7 @@ TagManager:
   - BuyablePistol
   - BuyableBombLauncher
   - BuyableShotgun
+  - BuyableAmmo
   layers:
   - Default
   - TransparentFX
