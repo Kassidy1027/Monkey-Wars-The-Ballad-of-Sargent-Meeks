@@ -44,6 +44,7 @@ public class Health : MonoBehaviour
     public GameObject reviveSprite;
 
 
+
     // Use this for initialization
     void Start()
 	{
@@ -158,6 +159,7 @@ public class Health : MonoBehaviour
 		{
             // Remove this GameObject from the scene
             Destroy(gameObject);
+			
         }
 	}
 
