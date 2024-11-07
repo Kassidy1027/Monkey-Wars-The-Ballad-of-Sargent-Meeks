@@ -124,13 +124,21 @@ public class Health : MonoBehaviour
 			Instantiate(explosion, transform.position, transform.rotation);
 
 		if (isPlayer && deathCam != null && dead)
+		{
 			deathCamera.enabled = true;
+			StatisticManager.UpdateStat("Deaths", 1);
+		}
 
 		// Loot drops
 		if (this.tag == "Enemy")
 		{
 			float randomDrop = Random.Range(0, 10);
             playerPoints.UpdatePoints(pointValue);
+
+			// update statistics for kills and points earned
+			StatisticManager.UpdateStat("Kills", 1);
+			StatisticManager.UpdateStat("Points", pointValue);
+
 
             if (randomDrop <= 2)
 			{

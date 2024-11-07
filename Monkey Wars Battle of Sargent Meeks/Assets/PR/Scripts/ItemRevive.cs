@@ -13,6 +13,7 @@ public class ItemRevive : ShopItem
             Player.GetComponent<Health>().hasRevive = true;
             points.UpdatePoints(price * -1);
             PriceIncrease();
+            UpdateStatistics();
         }
     }
 }

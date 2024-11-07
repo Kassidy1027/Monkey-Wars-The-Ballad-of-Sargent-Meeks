@@ -15,6 +15,7 @@ public class ItemMaxHealth : ShopItem
             pH.currentHealth += amount;
             points.UpdatePoints(price * -1);
             healthUI.UpdateVals();
+            UpdateStatistics();
             PriceIncrease();
         }
     }

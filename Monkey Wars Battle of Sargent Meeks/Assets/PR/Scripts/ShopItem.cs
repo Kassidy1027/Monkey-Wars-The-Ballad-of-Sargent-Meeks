@@ -30,4 +30,9 @@ public class ShopItem : MonoBehaviour
         price = Mathf.FloorToInt(price * priceIncreaseMult);
         UpdatePriceText();
     }
+
+    public void UpdateStatistics()
+    {
+        StatisticManager.UpdateStat("Buys", 1);
+    }
 }

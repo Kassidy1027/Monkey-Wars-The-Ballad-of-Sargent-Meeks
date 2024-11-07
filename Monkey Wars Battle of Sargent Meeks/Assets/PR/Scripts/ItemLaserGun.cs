@@ -12,6 +12,7 @@ public class ItemLaserGun : ShopItem
             WeaponSwap ws = Player.GetComponent<WeaponSwap>();
             ws.weapon4 = true;
             points.UpdatePoints(price * -1);
+            UpdateStatistics();
             Destroy(this.gameObject);
         }
     }

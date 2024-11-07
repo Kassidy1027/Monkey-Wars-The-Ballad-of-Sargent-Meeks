@@ -450,6 +450,8 @@ public class FirstPersonController : MonoBehaviour
                 }
 
                 rb.AddForce(velocityChange, ForceMode.VelocityChange);
+
+                StatisticManager.UpdateStat("Walked", velocityChange.magnitude);
             }
             // All movement calculations while walking
             else
