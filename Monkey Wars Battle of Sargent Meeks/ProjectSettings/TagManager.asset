@@ -19,6 +19,7 @@ TagManager:
   - BuyableBombLauncher
   - BuyableShotgun
   - BuyableAmmo
+  - BuyableHealth
   layers:
   - Default
   - TransparentFX
