@@ -8,9 +8,9 @@ public class ItemMedkit : ShopItem
     public UIHealthManager healthUI;
     public void Buy()
     {
-        if (points.points >= price)
+        Health pH = Player.GetComponent<Health>();
+        if (points.points >= price && pH.currentHealth < pH.maxHealth)
         {
-            Health pH = Player.GetComponent<Health>();
             pH.currentHealth += amount;
             if (pH.currentHealth > pH.maxHealth)
             {
