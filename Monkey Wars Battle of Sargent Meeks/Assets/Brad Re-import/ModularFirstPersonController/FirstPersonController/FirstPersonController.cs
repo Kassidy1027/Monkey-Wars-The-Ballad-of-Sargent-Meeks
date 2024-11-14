@@ -625,6 +625,9 @@ public class FirstPersonController : MonoBehaviour
             case "BuyableHealth":
                 other.GetComponent<ItemMedkit>().Buy();
                 break;
+            case "BuyableDamage":
+                other.GetComponent<ItemDamageUp>().Buy();
+                break;
 
             default:
                 break;
