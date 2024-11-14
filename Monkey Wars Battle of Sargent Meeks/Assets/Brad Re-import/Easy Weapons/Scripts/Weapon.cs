@@ -223,6 +223,8 @@ public class Weapon : MonoBehaviour
     public bool playerInRange;
     private Transform target;
 
+    public LineRenderer lineRenderer;
+
     // Use this for initialization
     void Start()
     {
@@ -234,6 +236,8 @@ public class Weapon : MonoBehaviour
             player = GameObject.Find("Player");
             playerHealth = player.GetComponent<Health>();
         }
+
+        lineRenderer = GameObject.Find("LineRenderer").GetComponent<LineRenderer>();
 
         if (type == WeaponType.Raycast && ammoCapacity == 16)
         {
@@ -713,6 +717,15 @@ public class Weapon : MonoBehaviour
                 {
                     damage *= heat * powerMultiplier;
                     heat = 0.0f;
+                }
+
+                if (hit.collider != null)
+                {
+                    lineRenderer.enabled = true;
+
+                    lineRenderer.SetPosition(0, transform.position);
+                    lineRenderer.SetPosition(1, ray.GetPoint(hit.distance));
+
                 }
 
                 // Damage
