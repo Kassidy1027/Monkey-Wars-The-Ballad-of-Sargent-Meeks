@@ -126,6 +126,7 @@ public class Health : MonoBehaviour
 
 		if (isPlayer && deathCam != null && dead)
 		{
+			PauseHandler.PS.canPause = false;
 			deathCamera.enabled = true;
 			StatisticManager.UpdateStat("Deaths", 1);
 		}

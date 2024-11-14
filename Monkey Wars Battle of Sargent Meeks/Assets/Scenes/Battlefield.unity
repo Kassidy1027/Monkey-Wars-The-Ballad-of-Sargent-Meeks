@@ -35006,6 +35006,7 @@ GameObject:
   - component: {fileID: 814847023}
   - component: {fileID: 814847028}
   - component: {fileID: 814847029}
+  - component: {fileID: 814847030}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -35089,7 +35090,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 101
   m_TargetDisplay: 0
 --- !u!224 &814847027
 RectTransform:
@@ -35142,6 +35143,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77df1463dcfdb4644bf92f3f135b267c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &814847030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 814847022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ec80d153d872a149b9799c87d235659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canPause: 0
+  paused: 0
+  pauseMenu: {fileID: 2113295468}
 --- !u!1001 &818253363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -87503,10 +87519,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 3
+      - m_Target: {fileID: 814847030}
+        m_TargetAssemblyTypeName: PauseHandler, Assembly-CSharp
+        m_MethodName: PauseMenu
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
