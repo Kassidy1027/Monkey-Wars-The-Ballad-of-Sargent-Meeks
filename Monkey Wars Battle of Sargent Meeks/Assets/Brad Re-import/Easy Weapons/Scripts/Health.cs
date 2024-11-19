@@ -129,6 +129,7 @@ public class Health : MonoBehaviour
 			PauseHandler.PS.canPause = false;
 			deathCamera.enabled = true;
 			StatisticManager.UpdateStat("Deaths", 1);
+			StatisticLogHandler.SL.WriteGameStats();
 		}
 
 		// Loot drops

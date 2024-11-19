@@ -11,6 +11,13 @@ public static class StatisticManager
         public string name;
         public string desc;
         public float amount;
+
+        public void Set(Stat s)
+        {
+            name = s.name;
+            desc = s.desc;
+            amount = s.amount;
+        }
     }
 
     [System.Serializable]
@@ -20,15 +27,14 @@ public static class StatisticManager
     }
 
     public static StatList statList;
+    private static StatList prevStats;
     private static TextAsset jsonFile;
-
 
     public static void LoadData()
     {
         jsonFile = (TextAsset)Resources.Load("stats");
 
         statList = JsonUtility.FromJson<StatList>(jsonFile.text);
-
     }
 
     public static void WriteData()
@@ -69,5 +75,30 @@ public static class StatisticManager
         {
             statList.stats[i].amount = 0;
         }
+
+        WriteData();
+    }
+
+    public static void LoadPrev()
+    {
+        if (prevStats == null)
+        {
+            prevStats = new StatList();
+            prevStats.stats = new Stat[statList.stats.Length];
+        }
+
+        for (int i = 0; i < statList.stats.Length; i++)
+        {
+            prevStats.stats[i].Set(statList.stats[i]);
+        }
+    }
+
+    public static float FindDifference(string name)
+    {
+        float v;
+        int i = FindStatByName(name);
+
+        v = statList.stats[i].amount - prevStats.stats[i].amount;
+        return v;
     }
 }
