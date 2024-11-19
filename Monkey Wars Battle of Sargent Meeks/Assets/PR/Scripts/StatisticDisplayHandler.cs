@@ -22,6 +22,7 @@ public class StatisticDisplayHandler : MonoBehaviour
         finally
         {
             UpdateDisplayStats();
+            StatisticManager.LoadPrev();
         }
     }
 
