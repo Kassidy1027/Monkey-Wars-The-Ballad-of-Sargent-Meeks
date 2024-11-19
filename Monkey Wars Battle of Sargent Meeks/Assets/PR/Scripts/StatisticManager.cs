@@ -85,9 +85,14 @@ public static class StatisticManager
         {
             prevStats = new StatList();
             prevStats.stats = new Stat[statList.stats.Length];
+
+            for (int i = 0; i < prevStats.stats.Length; i++)
+            {
+                prevStats.stats[i] = new Stat();
+            }
         }
 
-        for (int i = 0; i < statList.stats.Length; i++)
+        for (int i = 0; i < prevStats.stats.Length; i++)
         {
             prevStats.stats[i].Set(statList.stats[i]);
         }

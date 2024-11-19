@@ -32,6 +32,8 @@ public class StatisticLogHandler : MonoBehaviour
             float v = StatisticManager.FindDifference(t.gameObject.name);
             t.text = string.Format(StatisticManager.statList.stats[i].desc, v);
         }
+
+        StatisticManager.WriteData();
     }
 
 

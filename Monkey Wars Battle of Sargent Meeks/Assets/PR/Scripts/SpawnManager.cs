@@ -1,9 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    private class ToSpawn
+    {
+        public float timer;
+        public GameObject enemy;
+
+        public ToSpawn(float t, GameObject e)
+        {
+            timer = t;
+            enemy = e;
+        }
+    }
+
+
 
     // Spawn Point locations
     [Header("Spawn Points")]
@@ -17,8 +31,8 @@ public class SpawnManager : MonoBehaviour
     private int roundNumber = 1;
 
     // keeps tracked of the number of enemies spawned and the total to spawn (prevents the round from increasing multiple times due to lack of immediate enemies)
-    private int totalSpawns;
-    private int enemiesSpawned;
+    private float spawnTimer;
+    private Stack<ToSpawn> spawnList = new Stack<ToSpawn>();
 
     // current enemy value (combined basic equivalent) and number of enemies to spawn
     [Header("Enemy Value and Total")]
@@ -40,6 +54,7 @@ public class SpawnManager : MonoBehaviour
     {
         // resets round number, spawns the first wave, and updates UI
         roundNumber = 1;
+        spawnTimer = 0.0f;
         DecideSpawnPoints();
 
         DecideSpawns();
@@ -60,13 +75,25 @@ public class SpawnManager : MonoBehaviour
             {
                 roundIncrease();
             }
-        }  
+        }
+        else
+        {
+            // decrease the timer to spawn the next enemy
+            spawnTimer -= Time.deltaTime;
+
+            if (spawnTimer <= 0)
+            {
+                ToSpawn e = spawnList.Pop();
+                SpawnObject(e.enemy);
+
+                spawnTimer = e.timer;
+            }
+        }
     }
 
     private void roundIncrease()
     {
-        // reset values
-        enemiesSpawned = 0;
+        spawnList.Clear();
 
         // increase the enemy value and cound by a percentage
         enemyVal *= enemyValIncrease;
@@ -89,7 +116,6 @@ public class SpawnManager : MonoBehaviour
     private void DecideSpawns()
     {
         int currVal = Mathf.CeilToInt(enemyVal);
-        int enCount = 0;
         bool spawned = true;
 
         //while (enCount > 0)
@@ -106,26 +132,22 @@ public class SpawnManager : MonoBehaviour
                     // spawn the enemy and reduce the current cost
                     // also increase the number of enemies to track over the round
                     //Debug.Log("Spawning!!");
-                    StartCoroutine(SpawnObject(enemyTypes[i], Random.Range(0.1f, 15.5f)) );
                     currVal -= cost;
+                    spawnList.Push(new ToSpawn(Random.Range(0.1f, 5.0f), enemyTypes[i] ) );
 
                     spawned = true;
-
-                    enCount++;                        
+                       
                 }
 
             }
         }
-        totalSpawns = enCount;
     }
 
     /*
      * SPAWN AN ENEMY AT A RANDOM POINT
      */
-    private IEnumerator SpawnObject(GameObject spawn, float time)
+    private void SpawnObject(GameObject spawn)
     {
-        yield return new WaitForSecondsRealtime(time);
-
         Transform point;
         do
         {
@@ -134,7 +156,6 @@ public class SpawnManager : MonoBehaviour
              
         Vector3 sP = new Vector3(point.position.x + Random.Range(-1.0f, 1.0f), point.position.y, point.position.z + Random.Range(-1.0f, 1.0f));
         Instantiate(spawn, sP, Quaternion.identity);
-        enemiesSpawned++;
     }
 
     /*
@@ -167,7 +188,7 @@ public class SpawnManager : MonoBehaviour
     // for checking if round can end
     private bool FinishedSpawningEnemies()
     {
-        return enemiesSpawned >= totalSpawns;
+        return spawnList.Count <= 0;
     }
 
     private bool Chance(int max)
