@@ -9,7 +9,14 @@ public class ItemDamageUp : ShopItem
         if (points.points >= price)
         {
             WeaponSwap playerWeapon = Player.GetComponent<WeaponSwap>();
-            playerWeapon.currentWeapon.power *= 2;
+            if (playerWeapon.currentWeapon.type == WeaponType.Raycast)
+            {
+                playerWeapon.currentWeapon.power += (playerWeapon.currentWeapon.power / 2);
+            }
+            else
+            {
+                playerWeapon.currentWeapon.bonusDamage += (playerWeapon.currentWeapon.bonusDamage / 2);
+            }
             points.UpdatePoints(price * -1);
             PriceIncrease();
         }

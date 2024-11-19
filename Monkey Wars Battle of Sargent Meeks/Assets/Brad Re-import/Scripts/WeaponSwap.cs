@@ -156,7 +156,7 @@ public class WeaponSwap : MonoBehaviour
             {
                 mfourMesh.enabled = false;
                 mfour.playerWeapon = false;
-                currentWeapon = railgun;
+                currentWeapon = shotgun;
                 mfour.showCurrentAmmo = false;
                 mfour.showCrosshair = false;
                 pistolMesh.enabled = false;

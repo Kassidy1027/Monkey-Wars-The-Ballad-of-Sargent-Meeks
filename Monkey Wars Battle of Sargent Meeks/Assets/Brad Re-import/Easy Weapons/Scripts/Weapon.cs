@@ -109,6 +109,7 @@ public class Weapon : MonoBehaviour
     // Projectile
     public GameObject projectile;                       // The projectile to be launched (if the type is projectile)
     public Transform projectileSpawnSpot;               // The spot where the projectile should be instantiated
+    public float bonusDamage = 0;
 
     // Beam
     public bool reflect = true;                         // Whether or not the laser beam should reflect off of certain surfaces
@@ -224,6 +225,7 @@ public class Weapon : MonoBehaviour
     private Transform target;
 
     public LineRenderer lineRenderer;
+    public Transform rayStorage;
 
     // Use this for initialization
     void Start()
@@ -236,8 +238,11 @@ public class Weapon : MonoBehaviour
             player = GameObject.Find("Player");
             playerHealth = player.GetComponent<Health>();
         }
-
-        lineRenderer = GameObject.Find("LineRenderer").GetComponent<LineRenderer>();
+        else
+        {
+            rayStorage = GameObject.Find("RayStorage").transform;
+            lineRenderer = GameObject.Find("LineRenderer").GetComponent<LineRenderer>();
+        }
 
         if (type == WeaponType.Raycast && ammoCapacity == 16)
         {
@@ -719,13 +724,14 @@ public class Weapon : MonoBehaviour
                     heat = 0.0f;
                 }
 
-                if (hit.collider != null)
+                if (hit.collider != null && playerWeapon)
                 {
                     lineRenderer.enabled = true;
 
-                    lineRenderer.SetPosition(0, transform.position);
+                    lineRenderer.SetPosition(0, raycastStartSpot.position);
                     lineRenderer.SetPosition(1, ray.GetPoint(hit.distance));
 
+                    StartCoroutine(DisableRay());
                 }
 
                 // Damage
@@ -948,6 +954,7 @@ public class Weapon : MonoBehaviour
             if (projectile != null)
             {
                 GameObject proj = Instantiate(projectile, projectileSpawnSpot.position, projectileSpawnSpot.rotation) as GameObject;
+                proj.GetComponent<Projectile>().damage += bonusDamage;
 
                 // Warmup heat
                 if (warmup)
@@ -1220,6 +1227,13 @@ public class Weapon : MonoBehaviour
         // Apply the random values to the weapon's postion and rotation
         weaponModel.transform.Translate(new Vector3(0, 0, -kickBack), Space.Self);
         weaponModel.transform.Rotate(new Vector3(-kickRot, 0, 0), Space.Self);
+    }
+
+    public IEnumerator DisableRay()
+    {
+        yield return new WaitForSeconds(0.5f);
+        lineRenderer.SetPosition(0, rayStorage.position);
+        lineRenderer.SetPosition(1, rayStorage.position);
     }
 
     // Find a mesh renderer in a specified gameobject, it's children, or its parents

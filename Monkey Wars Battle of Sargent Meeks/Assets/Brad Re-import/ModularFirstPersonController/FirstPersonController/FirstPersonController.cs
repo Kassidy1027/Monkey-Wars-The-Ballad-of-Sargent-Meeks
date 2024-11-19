@@ -596,46 +596,48 @@ public class FirstPersonController : MonoBehaviour
             other.gameObject.SetActive(false);
         }
 
-        switch (other.gameObject.tag)
+        if (interactionBox.enabled)
         {
-            case "GodsSecondGrace":
-                if (!playerHealth.hasRevive)
-                {
-                    other.GetComponent<ItemRevive>().Buy();
-                }
-                break;
-            case "MonkeysMight":
-                other.GetComponent<ItemMaxHealth>().Buy();
-                break;
-            case "HyperCherry":
-                other.GetComponent<ItemMoveSpeed>().Buy();
-                break;
-            case "BuyableLaserGun":
-                other.GetComponent<ItemLaserGun>().Buy();
-                break;
-            case "BuyablePistol":
-                other.GetComponent<ItemPistol>().Buy();
-                break;
-            case "BuyableBombLauncher":
-                other.GetComponent<ItemBombLauncher>().Buy();
-                break;
-            case "BuyableShotgun":
-                other.GetComponent<ItemShotgun>().Buy();
-                break;
-            case "BuyableAmmo":
-                other.GetComponent<ItemAmmo>().Buy();
-                break;
-            case "BuyableHealth":
-                other.GetComponent<ItemMedkit>().Buy();
-                break;
-            case "BuyableDamage":
-                other.GetComponent<ItemDamageUp>().Buy();
-                break;
+            switch (other.gameObject.tag)
+            {
+                case "GodsSecondGrace":
+                    if (!playerHealth.hasRevive)
+                    {
+                        other.GetComponent<ItemRevive>().Buy();
+                    }
+                    break;
+                case "MonkeysMight":
+                    other.GetComponent<ItemMaxHealth>().Buy();
+                    break;
+                case "HyperCherry":
+                    other.GetComponent<ItemMoveSpeed>().Buy();
+                    break;
+                case "BuyableLaserGun":
+                    other.GetComponent<ItemLaserGun>().Buy();
+                    break;
+                case "BuyablePistol":
+                    other.GetComponent<ItemPistol>().Buy();
+                    break;
+                case "BuyableBombLauncher":
+                    other.GetComponent<ItemBombLauncher>().Buy();
+                    break;
+                case "BuyableShotgun":
+                    other.GetComponent<ItemShotgun>().Buy();
+                    break;
+                case "BuyableAmmo":
+                    other.GetComponent<ItemAmmo>().Buy();
+                    break;
+                case "BuyableHealth":
+                    other.GetComponent<ItemMedkit>().Buy();
+                    break;
+                case "BuyableDamage":
+                    other.GetComponent<ItemDamageUp>().Buy();
+                    break;
 
-            default:
-                break;
+                default:
+                    break;
+            }
         }
-
     }
 
     IEnumerator DisableBox()
