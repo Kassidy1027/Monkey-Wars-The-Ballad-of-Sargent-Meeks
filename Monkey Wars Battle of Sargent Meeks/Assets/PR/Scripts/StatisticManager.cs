@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using UnityEditor;
 using UnityEngine;
 
 public static class StatisticManager
@@ -28,20 +29,23 @@ public static class StatisticManager
 
     public static StatList statList;
     private static StatList prevStats;
-    private static TextAsset jsonFile;
+    private static string jsonFile;
+
+    private static string path = Application.streamingAssetsPath + "/stats.json"; 
 
     public static void LoadData()
     {
-        jsonFile = (TextAsset)Resources.Load("stats");
+        //TextAsset jFile = (TextAsset)Resources.Load("stats");
+        string jsonFile = File.ReadAllText(path);
 
-        statList = JsonUtility.FromJson<StatList>(jsonFile.text);
+        statList = JsonUtility.FromJson<StatList>(jsonFile);
     }
 
     public static void WriteData()
     {
         string output = JsonUtility.ToJson(statList);
 
-        File.WriteAllText(Application.dataPath + "/Resources/stats.json", output);
+        File.WriteAllText(path, output);
     }
 
     public static int FindStatByName(string name)

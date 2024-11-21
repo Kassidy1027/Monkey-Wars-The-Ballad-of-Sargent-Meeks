@@ -27,6 +27,11 @@ public class UIController : MonoBehaviour
     // Method used to Change Between Scenes
     public void LoadScene(int sceneNumber)
     {
+        if (sceneNumber == 0) 
+        { 
+            StatisticManager.WriteData(); 
+        }
+
         // Loading up the Scene of the Variable
         SceneManager.LoadScene(sceneNumber);
 
