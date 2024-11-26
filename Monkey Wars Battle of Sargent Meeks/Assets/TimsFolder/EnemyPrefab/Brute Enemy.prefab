@@ -3676,9 +3676,11 @@ MonoBehaviour:
   dead: 0
   UIHM: {fileID: 0}
   hasRevive: 0
-  pointValue: 25
+  pointValue: 40
   playerPoints: {fileID: 0}
   player: {fileID: 0}
+  ws: {fileID: 0}
+  reviveSprite: {fileID: 0}
 --- !u!54 &7309746493925958814
 Rigidbody:
   m_ObjectHideFlags: 0

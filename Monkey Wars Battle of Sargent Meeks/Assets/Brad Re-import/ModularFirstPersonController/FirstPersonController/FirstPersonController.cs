@@ -145,7 +145,8 @@ public class FirstPersonController : MonoBehaviour
 
     private void Awake()
     {
-        UpdatePoints(points);
+        //UpdatePoints(points);
+        UIT.UpdatePointCount(points);
         rb = GetComponent<Rigidbody>();
         playerWeapon = GetComponent<WeaponSwap>();
         interactionBox = GetComponent<BoxCollider>();

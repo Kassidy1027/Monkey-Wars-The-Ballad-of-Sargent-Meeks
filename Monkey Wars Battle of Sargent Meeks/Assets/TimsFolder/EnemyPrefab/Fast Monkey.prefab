@@ -3806,6 +3806,7 @@ MonoBehaviour:
   allowCancel: 0
   projectile: {fileID: 0}
   projectileSpawnSpot: {fileID: 2536380498947420178}
+  bonusDamage: 0
   reflect: 1
   reflectionMaterial: {fileID: 0}
   maxReflections: 5
@@ -3862,26 +3863,26 @@ MonoBehaviour:
   - tag: Ground
     material: {fileID: 2100000, guid: 1256ac8cd12934c47af6ecb00d1841d4, type: 2}
     physicMaterial: {fileID: 0}
-    bulletHole: {fileID: 100000, guid: 550fd384c6d641342bbb66cd56898200, type: 3}
+    bulletHole: {fileID: 0}
   - tag: Ground
     material: {fileID: 2100000, guid: 1256ac8cd12934c47af6ecb00d1841d4, type: 2}
     physicMaterial: {fileID: 0}
-    bulletHole: {fileID: 100000, guid: 3a8d2c1237d395e469b580517e55964f, type: 3}
+    bulletHole: {fileID: 0}
   - tag: Everything
     material: {fileID: 2100000, guid: 3546fbe3a0fdf6c4d86667d245c6b96c, type: 2}
     physicMaterial: {fileID: 0}
-    bulletHole: {fileID: 100000, guid: 843945ca3ccc0d246adcecb95efff4fd, type: 3}
+    bulletHole: {fileID: 0}
   - tag: Everything
     material: {fileID: 2100000, guid: 66a6975fe81c6c34dba7c28a523ee98b, type: 2}
     physicMaterial: {fileID: 0}
-    bulletHole: {fileID: 100000, guid: 3a8d2c1237d395e469b580517e55964f, type: 3}
+    bulletHole: {fileID: 0}
   - tag: Everything
     material: {fileID: 2100000, guid: 813c919e713514d4ca5720d3d6c3ebfc, type: 2}
     physicMaterial: {fileID: 0}
-    bulletHole: {fileID: 100000, guid: 0cbc67bd61063af4e904364139f35b5d, type: 3}
+    bulletHole: {fileID: 0}
   defaultBulletHoles:
-  - {fileID: 100000, guid: 92062f2e3e723254db326e0b31028d43, type: 3}
-  - {fileID: 100000, guid: b70d6fd18250bb8499464c3434311310, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   bulletHoleExceptions: []
   showCrosshair: 0
   crosshairTexture: {fileID: 2800000, guid: b4c5e19a5662ed244b54f15320c9fb31, type: 3}
@@ -3892,6 +3893,8 @@ MonoBehaviour:
   reloadSound: {fileID: 8300000, guid: a236ed6ed1165ca44908f0cfe8c7ed65, type: 3}
   dryFireSound: {fileID: 0}
   playerInRange: 0
+  lineRenderer: {fileID: 0}
+  rayStorage: {fileID: 0}
 --- !u!82 &2536380498939595602
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4670,9 +4673,11 @@ MonoBehaviour:
   dead: 0
   UIHM: {fileID: 0}
   hasRevive: 0
-  pointValue: 15
+  pointValue: 20
   playerPoints: {fileID: 0}
   player: {fileID: 0}
+  ws: {fileID: 0}
+  reviveSprite: {fileID: 0}
 --- !u!54 &5090139462243371341
 Rigidbody:
   m_ObjectHideFlags: 0
