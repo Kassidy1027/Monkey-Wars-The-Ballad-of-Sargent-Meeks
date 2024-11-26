@@ -30,22 +30,22 @@ public static class StatisticManager
     public static StatList statList;
     private static StatList prevStats;
     private static string jsonFile;
-
-    private static string path = Application.streamingAssetsPath + "/stats.json"; 
+    private static string resourcePath = Application.dataPath + "/ Resources/stats.json";
+    //private static string path = Application.streamingAssetsPath + "/stats.json"; 
 
     public static void LoadData()
     {
-        //TextAsset jFile = (TextAsset)Resources.Load("stats");
-        string jsonFile = File.ReadAllText(path);
+        TextAsset jFile = (TextAsset)Resources.Load("stats");
+        //string jsonFile = File.ReadAllText(path);
 
-        statList = JsonUtility.FromJson<StatList>(jsonFile);
+        statList = JsonUtility.FromJson<StatList>(jFile.text);
     }
 
     public static void WriteData()
     {
         string output = JsonUtility.ToJson(statList);
 
-        File.WriteAllText(path, output);
+        File.WriteAllText(resourcePath, output);
     }
 
     public static int FindStatByName(string name)
