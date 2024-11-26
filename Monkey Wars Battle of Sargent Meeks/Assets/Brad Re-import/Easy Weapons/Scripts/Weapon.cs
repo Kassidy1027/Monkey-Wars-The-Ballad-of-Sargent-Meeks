@@ -724,6 +724,7 @@ public class Weapon : MonoBehaviour
                     heat = 0.0f;
                 }
 
+
                 if (hit.collider != null && playerWeapon)
                 {
                     lineRenderer.enabled = true;
@@ -733,16 +734,17 @@ public class Weapon : MonoBehaviour
 
                     StartCoroutine(DisableRay());
                 }
+                
 
                 // Damage
-                hit.collider.gameObject.SendMessageUpwards("ChangeHealth", -damage, SendMessageOptions.DontRequireReceiver);
+                //hit.collider.gameObject.SendMessageUpwards("ChangeHealth", -damage, SendMessageOptions.DontRequireReceiver);
 
-                if (shooterAIEnabled)
+                /*if (shooterAIEnabled)
                 {
                     hit.transform.SendMessageUpwards("Damage", damage / 100, SendMessageOptions.DontRequireReceiver);
-                }
+                }*/
 
-                if (bloodyMessEnabled)
+                /*if (bloodyMessEnabled)
                 {
                     //call the ApplyDamage() function on the enenmy CharacterSetup script
                     if (hit.collider.gameObject.layer == LayerMask.NameToLayer("Limb"))
@@ -750,23 +752,22 @@ public class Weapon : MonoBehaviour
                         Vector3 directionShot = hit.collider.transform.position - transform.position;
 
                         //  Un-comment the following section for Bloody Mess compatibility
-                        /*
+                        
 						if (hit.collider.gameObject.GetComponent<Limb>())
 						{
 							GameObject parent = hit.collider.gameObject.GetComponent<Limb>().parent;
 							CharacterSetup character = parent.GetComponent<CharacterSetup>();
 							character.ApplyDamage(damage, hit.collider.gameObject, weaponType, directionShot, Camera.main.transform.position);
 						}
-						*/
+						
                     }
                 }
-
-
+                */
 
                 // Bullet Holes
 
                 // Make sure the hit GameObject is not defined as an exception for bullet holes
-                bool exception = false;
+                /*bool exception = false;
                 if (bhSystem == BulletHoleSystem.Tag)
                 {
                     foreach (SmartBulletHoleGroup bhg in bulletHoleExceptions)
@@ -852,8 +853,9 @@ public class Weapon : MonoBehaviour
                             }
                         }
                     }
+                */
 
-
+                /*
                     SmartBulletHoleGroup sbhg = null;
 
                     // If no bullet holes were specified for this parameter, use the default bullet holes
@@ -880,7 +882,7 @@ public class Weapon : MonoBehaviour
                     if (sbhg.bulletHole != null)
                         sbhg.bulletHole.PlaceBulletHole(hit.point, Quaternion.FromToRotation(Vector3.up, hit.normal));
                 }
-
+                */
                 // Hit Effects
                 if (makeHitEffects)
                 {
