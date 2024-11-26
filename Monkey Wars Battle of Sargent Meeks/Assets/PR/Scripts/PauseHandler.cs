@@ -65,4 +65,11 @@ public class PauseHandler : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
         }
     }
+
+    public void Unpause()
+    {
+        ws.currentWeapon.showCrosshair = true;
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 }
