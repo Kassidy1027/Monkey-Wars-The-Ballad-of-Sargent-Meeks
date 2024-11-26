@@ -75,10 +75,10 @@ public class Health : MonoBehaviour
 			Die();
 		}
 
-		if (Input.GetKeyDown("return") && !gameStarts)
+		/*if (Input.GetKeyDown("return") && !gameStarts)
 		{
 			gameStarts = true;
-		}
+		}*/
 	}
 
 	public void ChangeHealth(float amount)

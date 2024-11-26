@@ -385,7 +385,7 @@ public class FirstPersonController : MonoBehaviour
                 HeadBob();
             }
 
-            if (Input.GetKeyDown("return") && !gameStarted)
+            /*if (Input.GetKeyDown("return") && !gameStarted)
             {
                 gameStarted = true;
                 playerCanMove = true;
@@ -394,7 +394,7 @@ public class FirstPersonController : MonoBehaviour
                 enableCrouch = true;
                 enableSprint = true;
                 enableJump = true;
-            }
+            }*/
 
             if (Input.GetKeyDown("e"))
             {
