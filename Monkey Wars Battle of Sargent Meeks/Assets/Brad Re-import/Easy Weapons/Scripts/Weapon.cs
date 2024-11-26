@@ -737,7 +737,7 @@ public class Weapon : MonoBehaviour
                 
 
                 // Damage
-                //hit.collider.gameObject.SendMessageUpwards("ChangeHealth", -damage, SendMessageOptions.DontRequireReceiver);
+                hit.collider.gameObject.SendMessageUpwards("ChangeHealth", -damage, SendMessageOptions.DontRequireReceiver);
 
                 /*if (shooterAIEnabled)
                 {
