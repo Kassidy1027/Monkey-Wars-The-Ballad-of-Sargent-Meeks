@@ -3676,7 +3676,7 @@ MonoBehaviour:
   dead: 0
   UIHM: {fileID: 0}
   hasRevive: 0
-  pointValue: 40
+  pointValue: 100
   playerPoints: {fileID: 0}
   player: {fileID: 0}
   ws: {fileID: 0}
