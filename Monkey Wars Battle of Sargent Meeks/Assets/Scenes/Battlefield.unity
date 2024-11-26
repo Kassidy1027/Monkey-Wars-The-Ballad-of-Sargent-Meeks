@@ -4891,6 +4891,7 @@ GameObject:
   - component: {fileID: 123908065}
   - component: {fileID: 123908067}
   - component: {fileID: 123908066}
+  - component: {fileID: 123908068}
   m_Layer: 5
   m_Name: MainMenuOutline
   m_TagString: Untagged
@@ -4956,6 +4957,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 123908064}
   m_CullTransparentMesh: 1
+--- !u!114 &123908068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123908064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77df1463dcfdb4644bf92f3f135b267c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &125014257 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 461f0170c82b53340a9812199b63bbd4, type: 3}
@@ -6308,7 +6321,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 814847029}
+      - m_Target: {fileID: 123908068}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 3
@@ -6319,7 +6332,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
 --- !u!114 &149821956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33909,6 +33922,7 @@ GameObject:
   - component: {fileID: 768386679}
   - component: {fileID: 768386681}
   - component: {fileID: 768386680}
+  - component: {fileID: 768386682}
   m_Layer: 5
   m_Name: QuitOutline
   m_TagString: Untagged
@@ -33974,6 +33988,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 768386678}
   m_CullTransparentMesh: 1
+--- !u!114 &768386682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768386678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77df1463dcfdb4644bf92f3f135b267c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &769610759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52846,18 +52872,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 814847029}
+      - m_Target: {fileID: 768386682}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
 --- !u!114 &1157201758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89439,7 +89465,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
 --- !u!114 &1953139601
 MonoBehaviour:
   m_ObjectHideFlags: 0

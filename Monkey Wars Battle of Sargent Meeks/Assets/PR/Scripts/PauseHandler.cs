@@ -68,6 +68,7 @@ public class PauseHandler : MonoBehaviour
 
     public void Unpause()
     {
+        Cursor.lockState = CursorLockMode.None;
         pauseMenu.SetActive(false);
         ws.currentWeapon.showCrosshair = true;
         Time.timeScale = 1;

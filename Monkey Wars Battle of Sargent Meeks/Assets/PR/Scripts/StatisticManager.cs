@@ -30,7 +30,7 @@ public static class StatisticManager
     public static StatList statList;
     private static StatList prevStats;
     private static string jsonFile;
-    private static string resourcePath = Application.dataPath + "/ Resources/stats.json";
+    private static string resourcePath = Application.dataPath + "/Resources/stats.json";
     //private static string path = Application.streamingAssetsPath + "/stats.json"; 
 
     public static void LoadData()
