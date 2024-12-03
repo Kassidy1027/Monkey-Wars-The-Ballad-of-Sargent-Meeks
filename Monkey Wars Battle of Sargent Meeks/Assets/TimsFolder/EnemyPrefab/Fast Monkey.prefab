@@ -4661,8 +4661,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canDie: 1
-  startingHealth: 100
-  maxHealth: 100
+  startingHealth: 75
+  maxHealth: 75
   currentHealth: 100
   replaceWhenDead: 1
   deadReplacement: {fileID: 3886764786314746032, guid: 01e15fdeaa8599e48932d03583fcd270, type: 3}
@@ -4780,7 +4780,7 @@ MonoBehaviour:
   damage: 10
   canAttack: 1
   visionRange: 1000
-  attackRange: 0.5
+  attackRange: 3
   playerInSight: 0
   playerInRange: 0
   cost: 6
@@ -4794,7 +4794,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 50
+  m_Speed: 20
   m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 500

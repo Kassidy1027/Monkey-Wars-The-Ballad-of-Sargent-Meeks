@@ -9605,8 +9605,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canDie: 1
-  startingHealth: 150
-  maxHealth: 150
+  startingHealth: 125
+  maxHealth: 125
   currentHealth: 150
   replaceWhenDead: 1
   deadReplacement: {fileID: 3886764786314746032, guid: 484c672c45cb2c748bf7419bc0856332, type: 3}
