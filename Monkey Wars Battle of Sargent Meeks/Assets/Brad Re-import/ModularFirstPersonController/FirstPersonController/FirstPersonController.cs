@@ -634,6 +634,9 @@ public class FirstPersonController : MonoBehaviour
                 case "BuyableDamage":
                     other.GetComponent<ItemDamageUp>().Buy();
                     break;
+                case "BuyableEnding":
+                    other.GetComponent<ItemEnding>().Buy();
+                    break;
 
                 default:
                     break;
