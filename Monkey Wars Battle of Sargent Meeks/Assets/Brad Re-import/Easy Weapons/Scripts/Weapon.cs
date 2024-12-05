@@ -21,6 +21,8 @@ using System.Collections.Generic;
 using static UnityEngine.GraphicsBuffer;
 using System;
 using System.Security.Cryptography;
+using UnityEngine.UI;
+using TMPro;
 
 public enum WeaponType
 {
@@ -148,6 +150,7 @@ public class Weapon : MonoBehaviour
     public int reserveAmmo;                             // How much ammo is in reserve
     public float reloadTime = 2.0f;                     // How much time it takes to reload the weapon
     public bool showCurrentAmmo = true;                 // Whether or not the current ammo should be displayed in the GUI
+    public Slider ammoBar;
     public bool reloadAutomatically = true;             // Whether or not the weapon should reload automatically when out of ammo
 
     // Accuracy
@@ -242,6 +245,7 @@ public class Weapon : MonoBehaviour
         {
             rayStorage = GameObject.Find("RayStorage").transform;
             lineRenderer = GameObject.Find("LineRenderer").GetComponent<LineRenderer>();
+            ammoBar = GameObject.FindWithTag("AmmoBar").GetComponent<Slider>();
         }
 
         if (type == WeaponType.Raycast && ammoCapacity == 16)
@@ -665,7 +669,13 @@ public class Weapon : MonoBehaviour
         if (showCurrentAmmo)
         {
             if (type == WeaponType.Raycast || type == WeaponType.Projectile)
-                GUI.Label(new Rect(10, Screen.height - 30, 300, 60), "Ammo: " + currentAmmo + " / " + reserveAmmo);
+            {
+                ammoBar.maxValue = ammoCapacity;
+                ammoBar.value = currentAmmo;
+
+                ammoBar.GetComponentInChildren<TextMeshProUGUI>().text = currentAmmo + " / " + reserveAmmo + "";
+            }
+            //GUI.Label(new Rect(10, Screen.height - 30, 300, 60), "Ammo: " + currentAmmo + " / " + reserveAmmo);
             else if (type == WeaponType.Beam)
                 GUI.Label(new Rect(10, Screen.height - 30, 300, 60), "Heat: " + (int)(beamHeat * 100) + "/" + (int)(maxBeamHeat * 100));
         }

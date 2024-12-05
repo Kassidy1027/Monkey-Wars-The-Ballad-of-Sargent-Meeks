@@ -48,6 +48,11 @@ public class SpawnManager : MonoBehaviour
     // controls the UI (FOR TESTING ONLY)
     [Header("FOR TESTING, REMOVE LATER")]
     public UITextController UIT;
+    private int spawnPointsNum = 0;
+
+
+
+    private bool canKill = true;
 
     // Start is called before the first frame update
     void Start()
@@ -55,7 +60,8 @@ public class SpawnManager : MonoBehaviour
         // resets round number, spawns the first wave, and updates UI
         roundNumber = 1;
         spawnTimer = 0.0f;
-        DecideSpawnPoints();
+        spawnPointsNum = 0;
+        DecideSpawnPoints(spawnPointsNum);
 
         DecideSpawns();
 
@@ -67,6 +73,17 @@ public class SpawnManager : MonoBehaviour
     {
         // find all enemies in the scene
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            spawnList.Clear();
+            foreach (GameObject e in enemies)
+            {
+                Destroy(e.gameObject);
+            }
+            canKill = false;
+        }
+
         UIT.UpdateEnemyCount(enemies.Length);
 
         if (FinishedSpawningEnemies())
@@ -93,7 +110,7 @@ public class SpawnManager : MonoBehaviour
 
     private void roundIncrease()
     {
-        spawnList.Clear();
+        //spawnList.Clear();
 
         // increase the enemy value and cound by a percentage
         enemyVal *= enemyValIncrease;
@@ -103,13 +120,19 @@ public class SpawnManager : MonoBehaviour
         {
             enemyVal /= (enemyValIncrease * 1.25f);
         }
+        if (roundNumber % 10 == 0) 
+        {
+            spawnPointsNum++;
+        }
+
 
         // increase round number and update text
         roundNumber++;
         UIT.UpdateRoundText(roundNumber);
         StatisticManager.UpdateStat("Rounds", 1);
 
-        DecideSpawnPoints();
+
+        DecideSpawnPoints(spawnPointsNum);
         DecideSpawns();
     }
 
@@ -156,31 +179,20 @@ public class SpawnManager : MonoBehaviour
              
         Vector3 sP = new Vector3(point.position.x + Random.Range(-1.0f, 1.0f), point.position.y, point.position.z + Random.Range(-1.0f, 1.0f));
         Instantiate(spawn, sP, Quaternion.identity);
+        canKill = true;
     }
 
     /*
      * DECIDE SPAWNPOINTS
      */
-    private void DecideSpawnPoints()
+    private void DecideSpawnPoints(int num)
     {
-        int num = Mathf.FloorToInt(roundNumber * 1.3f);
-
-        if (num > spawnPoints.Length)
-            num = spawnPoints.Length;
-
-        foreach (Transform t in spawnPoints)
+        for(int i = 0; i < num; i++)
         {
-            t.gameObject.SetActive(false);
-        }
+            GameObject p = spawnPoints[Random.Range(0, spawnPoints.Length)].gameObject;
 
-        while (num > 0)
-        {
-            int i = Random.Range(0, spawnPoints.Length - 1);
-            if (!spawnPoints[i].gameObject.activeSelf)
-            {
-                spawnPoints[i].gameObject.SetActive(true);
-                num--;
-            }        
+            p.SetActive(true);
+
         }
     }
 

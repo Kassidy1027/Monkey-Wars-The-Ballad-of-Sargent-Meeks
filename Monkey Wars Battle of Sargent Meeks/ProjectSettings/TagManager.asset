@@ -22,6 +22,7 @@ TagManager:
   - BuyableHealth
   - BuyableDamage
   - BuyableEnding
+  - AmmoBar
   layers:
   - Default
   - TransparentFX
