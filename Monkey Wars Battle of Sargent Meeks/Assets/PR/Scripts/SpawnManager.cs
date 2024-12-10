@@ -50,10 +50,6 @@ public class SpawnManager : MonoBehaviour
     public UITextController UIT;
     private int spawnPointsNum = 0;
 
-
-
-    private bool canKill = true;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -73,16 +69,6 @@ public class SpawnManager : MonoBehaviour
     {
         // find all enemies in the scene
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            spawnList.Clear();
-            foreach (GameObject e in enemies)
-            {
-                Destroy(e.gameObject);
-            }
-            canKill = false;
-        }
 
         UIT.UpdateEnemyCount(enemies.Length);
 
@@ -179,7 +165,6 @@ public class SpawnManager : MonoBehaviour
              
         Vector3 sP = new Vector3(point.position.x + Random.Range(-1.0f, 1.0f), point.position.y, point.position.z + Random.Range(-1.0f, 1.0f));
         Instantiate(spawn, sP, Quaternion.identity);
-        canKill = true;
     }
 
     /*
