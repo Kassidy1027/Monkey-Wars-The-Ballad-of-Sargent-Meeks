@@ -42,6 +42,8 @@ public class Health : MonoBehaviour
 	public WeaponSwap ws;
 
     public GameObject reviveSprite;
+	private MaterialController materialController;
+	private SkinnedMeshRenderer meshRenderer;
 
 
 
@@ -55,6 +57,11 @@ public class Health : MonoBehaviour
         player = GameObject.Find("Player");
 		ws = player.GetComponent<WeaponSwap>();
         playerPoints = player.gameObject.GetComponent<FirstPersonController>();
+		if (this.tag == "Enemy")
+		{
+            materialController = GameObject.Find("GlobalController").GetComponent<MaterialController>();
+            meshRenderer = this.gameObject.transform.GetChild(0).GetComponent<SkinnedMeshRenderer>();
+        }
         // Initialize the currentHealth variable to the value specified by the user in startingHealth		
         try
 		{
@@ -88,6 +95,11 @@ public class Health : MonoBehaviour
 		if (isPlayer)
 		{
 			UIHM.UpdateVals();
+		}
+		else
+		{
+			meshRenderer.material = materialController.damagedEnemy;
+			StartCoroutine(EndFlash());
 		}
 
 		// If the health runs out, then Die.
@@ -186,4 +198,10 @@ public class Health : MonoBehaviour
 		yield return new WaitForSeconds(20.0f);
 		ammo.SetActive(false);
 	}
+
+	private IEnumerator EndFlash()
+	{
+		yield return new WaitForSeconds(0.2f);
+        meshRenderer.material = materialController.normalEnemy;
+    }
 }

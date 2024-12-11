@@ -97549,6 +97549,7 @@ GameObject:
   - component: {fileID: 2091880994}
   - component: {fileID: 2091880993}
   - component: {fileID: 2091880995}
+  - component: {fileID: 2091880996}
   m_Layer: 0
   m_Name: GlobalController
   m_TagString: Untagged
@@ -97631,6 +97632,20 @@ MonoBehaviour:
   enemyValIncrease: 1.02
   enemies: []
   UIT: {fileID: 814847023}
+--- !u!114 &2091880996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091880992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb5a4990efe1db44a8f6ef7ce934a48d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalEnemy: {fileID: 2100000, guid: 9c81fccbc4fd57845844f888da8b458d, type: 2}
+  damagedEnemy: {fileID: 2100000, guid: b93bc1a35ffe326488b64f47c0bd68dd, type: 2}
 --- !u!1 &2094034168
 GameObject:
   m_ObjectHideFlags: 0
