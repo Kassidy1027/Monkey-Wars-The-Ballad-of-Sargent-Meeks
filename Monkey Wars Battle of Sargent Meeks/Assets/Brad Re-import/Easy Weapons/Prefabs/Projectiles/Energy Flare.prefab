@@ -9745,11 +9745,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileType: 0
   damageType: 1
-  damage: 100
+  damage: 300
   speed: 30
   initialForce: 0
   lifetime: 20
-  seekRate: 1
+  seekRate: 5
   seekTag: Enemy
   explosion: {fileID: 100002, guid: afaf375eaf07ae1418d96ba144d3144c, type: 3}
   targetListUpdateRate: 1
